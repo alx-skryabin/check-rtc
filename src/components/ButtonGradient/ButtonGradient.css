@@ -1,0 +1,42 @@
+.animate-gradient {
+    border-radius: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+    background: linear-gradient(-45deg, #e73c7e, #23bdec);
+    background-size: 400% 400%;
+    animation: animate_gradient 3s ease infinite;
+}
+
+.animate-gradient-medium {
+    height: 56px;
+    line-height: 56px;
+    font-size: 20px;
+    padding: 5px 30px;
+}
+
+.animate-gradient-small {
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px;
+    padding: 5px 20px;
+}
+
+.animate-gradient:hover {
+    animation: none;
+}
+
+@keyframes animate_gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}

@@ -1,5 +1,65 @@
-.App-title {
+.ts__app {
+    /*border: 1px solid tomato;*/
+    padding: 0 20px 20px;
+}
+
+.ts__app-debug {
+    background: red;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.ts__app-title {
     font-size: 2em;
     text-align: center;
     color: #eee;
+}
+
+.ts__app-loader {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.ts__app-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.ts__app-result {
+    border: 1px solid red;
+}
+
+.ts__app-devices {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
+
+.ts__app-devices-item {
+    padding: 5px 15px;
+    font-size: 1.2rem;
+}
+
+.ts__app-devices__error {
+    color: tomato;
+}
+
+.ts__app-devices__success {
+    color: lime;
+}
+
+.ts__app-devices-item i {
+    margin-right: 5px;
+}
+
+.ts__app-videos {
+    background: #ddd;
 }
