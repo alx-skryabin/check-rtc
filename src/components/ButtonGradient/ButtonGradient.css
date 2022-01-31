@@ -11,18 +11,23 @@
     animation: animate_gradient 3s ease infinite;
 }
 
+.animate-gradient[data-action="disabled"] {
+    opacity: .7;
+    cursor: default;
+}
+
 .animate-gradient-medium {
     height: 56px;
     line-height: 56px;
     font-size: 20px;
-    padding: 5px 30px;
+    padding: 0 30px;
 }
 
 .animate-gradient-small {
     height: 38px;
     line-height: 38px;
     font-size: 16px;
-    padding: 5px 20px;
+    padding: 0 20px;
 }
 
 .animate-gradient:hover {

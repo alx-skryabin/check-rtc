@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function LocalVideo() {
+export default function LocalVideo({visible}) {
+    visible = visible ? 'block' : 'none'
+
     return (
-        <div className="ts__app-videos">
-            <video id="localVideo" playsInline autoPlay muted/>
-        </div>
+        <video id="localVideo" style={{display: visible}} playsInline autoPlay muted/>
     )
 }

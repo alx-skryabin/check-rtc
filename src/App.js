@@ -7,8 +7,8 @@ import './App.css'
 
 const initialState = {
     isStarted: false,
-    isFinish: false,
-    loader: false,
+    isFinish: false, //!!!
+    loader: true,
     devices: {
         audio: false,
         video: false
@@ -19,30 +19,58 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {...initialState}
+        this.methods = {
+            getState: this.getState.bind(this),
+            updateState: this.updateState.bind(this)
+        }
+    }
+
+    getState() {
+        return this.state
+    }
+
+    updateState(state) {
+        this.setState(state)
     }
 
     handlers(e) {
         const action = e.target.dataset.action
         if (!action) return
-        // console.log(action)
 
         switch (action) {
             case 'start':
-                this.start()
+                this.start(e.target)
                 break
             case 'stop':
                 this.stop()
                 break
             case 'debug':
-                console.log(this.state)
+                console.dir(this.state)
                 break
         }
     }
 
-    start() {
-        const state = this.state
-        state.isStarted = true
-        this.setState(state)
+    start($btn) {
+        $btn.innerText = 'Загрузка...'
+        $btn.setAttribute('data-action', 'disabled')
+
+        navigator.mediaDevices.getUserMedia({audio: true, video: true})
+            .then(stream => {
+                let $video = document.querySelector('#localVideo')
+                $video.srcObject = stream
+
+                $video.onloadeddata = () => {
+                    const state = this.state
+                    state.isStarted = true
+                    this.setState(state)
+                }
+            })
+            .catch(e => {
+                console.log(e)
+                $btn.innerText = 'Запустить тест'
+                $btn.setAttribute('data-action', 'start')
+                window.M.toast({html: '<i class="fas fa-exclamation-triangle"/> Необходимо дать разрешения браузеру на использование камеры и микрофона', classes: 'rounded'})
+            })
     }
 
     stop() {
@@ -53,12 +81,6 @@ export default class App extends React.Component {
 
     componentDidMount() {
         this.checkDevices()
-
-        // navigator.mediaDevices.getUserMedia({audio: true, video: true})
-        //     .then(stream => {
-        //         document.querySelector('#localVideo').srcObject = stream
-        //         console.log(2222, stream)
-        //     })
     }
 
     checkDevices() {
@@ -67,6 +89,7 @@ export default class App extends React.Component {
                 .then(list => {
                     const state = this.state
                     state.devices = parseDevices(list)
+                    state.loader = false
                     this.setState(state)
                 })
         } catch (e) {
@@ -76,7 +99,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <Context.Provider value={initialState}>
+            <Context.Provider value={this.methods}>
                 <div className="ts__app" onClick={this.handlers.bind(this)}>
                     <h1 className="ts__app-title">WebRTC testing</h1>
                     <i className="fas fa-bug ts__app-debug" data-action='debug'/>
