@@ -11,6 +11,7 @@
 # production
 /build
 .idea
+.firebase
 
 # misc
 .DS_Store
