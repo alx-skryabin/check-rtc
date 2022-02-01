@@ -15,7 +15,7 @@ export default function Controls() {
             }
 
             {(isStarted)
-                ? <ButtonGradient action='stop' text='Стоп' size='small'/> : ''
+                ? <ButtonGradient action='stop' text='Закрыть' size='small'/> : ''
             }
         </div>
     )

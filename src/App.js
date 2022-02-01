@@ -68,7 +68,7 @@ export default class App extends React.Component {
             })
             .catch(e => {
                 console.log(e)
-                $btn.innerText = 'Запустить тест'
+                $btn.innerText = 'Старт'
                 $btn.setAttribute('data-action', 'start')
                 window.M.toast({
                     html: '<i class="fas fa-exclamation-triangle"/> Необходимо дать разрешения браузеру на использование камеры и микрофона',

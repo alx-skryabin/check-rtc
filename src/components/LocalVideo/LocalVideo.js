@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function LocalVideo({visible}) {
-    visible = visible ? 'block' : 'none'
+    const display = visible ? 'block' : 'none'
 
     return (
         <div className="ts__app-stream">
-            <video id="localVideo" style={{display: visible}} playsInline autoPlay muted/>
+            <video id="localVideo" style={{display: display}} muted={!visible} playsInline autoPlay/>
         </div>
     )
 }

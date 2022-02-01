@@ -1,48 +1,68 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {detectBrowser, detectOS, detectSpeed} from '../Tools/tools'
+import Context from '../../context'
 import './UserInfo.css'
 
 export default function UserInfo() {
-    const {language, onLine, oscpu, userAgent} = navigator
+    const context = useContext(Context)
+    const {language, onLine, userAgent} = navigator
+    const {audio, video} = context.getState().devices
+
+    detectSpeed()
 
     return (
         <div className="ts__app-info">
             <div className="ts__app-info-item">
-                <i className="fas fa-microchip"/>
+                <i className="fas fa-video"/>
                 <div className="ts__app-info-title">
-                    RTCPeerConnection:
-                    <span>{new RTCPeerConnection(null) ? 'true' : 'unknown'}</span>
+                    Камера:
+                    <span>{video ? 'Подключена' : 'Неподключена'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
-                <i className="fas fa-mobile-alt"/>
+                <i className="fas fa-microphone"/>
+                <div className="ts__app-info-title">
+                    Микрофон:
+                    <span>{audio ? 'Подключен' : 'Неподключен'}</span>
+                </div>
+            </div>
+            <div className="ts__app-info-item">
+                <i className="fas fa-microchip"/>
+                <div className="ts__app-info-title">
+                    RTCPeerConnection:
+                    <span>{new RTCPeerConnection(null) ? 'Да' : 'unknown'}</span>
+                </div>
+            </div>
+            <div className="ts__app-info-item">
+                <i className="fas fa-desktop"/>
                 <div className="ts__app-info-title">
                     Устройство:
                     <span>{detectDevice(userAgent)}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
-                <i className="fab fa-windows"/>
+                <i className="fas fa-cog"/>
                 <div className="ts__app-info-title">
                     Система:
-                    <span>{oscpu}</span>
+                    <span>{detectOS()}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
-                <i className="fab fa-chrome"/>
+                <i className="fab fa-internet-explorer"/>
                 <div className="ts__app-info-title">
                     Браузер:
-                    <span>{userAgent}</span>
+                    <span>{detectBrowser()}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
-                <i className="fas fa-desktop"/>
+                <i className="fas fa-expand-arrows-alt"/>
                 <div className="ts__app-info-title">
-                    Разрешение экрана:
+                    Размер экрана:
                     <span>{window.screen.width} x {window.screen.height}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
-                <i className="fas fa-language"/>
+                <i className="fas fa-globe-americas"/>
                 <div className="ts__app-info-title">
                     Язык:
                     <span>{language}</span>
@@ -52,14 +72,14 @@ export default function UserInfo() {
                 <i className="fas fa-signal"/>
                 <div className="ts__app-info-title">
                     Online:
-                    <span>{onLine ? 'true' : 'unknown'}</span>
+                    <span>{onLine ? 'Да' : 'Нет'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-tachometer-alt"/>
                 <div className="ts__app-info-title">
                     Скорость интернета:
-                    <span>{window.navigator.connection?.downlink || 'unknown'}</span>
+                    <span id="speedEnthernet"><i className="fas fa-spinner fa-spin"/></span>
                 </div>
             </div>
         </div>
@@ -68,7 +88,7 @@ export default function UserInfo() {
 
 function detectDevice(userAgent) {
     return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(userAgent))
-        ? 'Телефон или планшет' : 'ПК'
+        ? 'Мобильное устройство' : 'Персональный компьютер'
 }
 
 function getIP() {
