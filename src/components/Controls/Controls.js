@@ -4,18 +4,18 @@ import Context from '../../context'
 
 export default function Controls() {
     const context = useContext(Context)
-    const {devices: {audio, video}, isStarted, isFinish} = context.getState()
+    const {devices: {audio, video}, isStarted} = context.getState()
 
     return (
         <div className='ts__app-controls'>
             {(!audio || !video) ? <NotConnectDevice/> : ''}
 
             {(!audio || !video || isStarted)
-                ? '' : <ButtonGradient action='start' text='Запустить тест'/>
+                ? '' : <ButtonGradient action='start' text='Старт'/>
             }
 
-            {(isStarted && !isFinish)
-                ? <ButtonGradient action='stop' text='Остановить' size='small'/> : ''
+            {(isStarted)
+                ? <ButtonGradient action='stop' text='Стоп' size='small'/> : ''
             }
         </div>
     )

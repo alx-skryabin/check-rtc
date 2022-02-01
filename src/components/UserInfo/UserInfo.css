@@ -1,0 +1,40 @@
+.ts__app-info {
+    background: #3a3a4e;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.ts__app-info-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    user-select: none;
+    padding: 5px 10px;
+    color: #eee;
+    transition: .2s;
+}
+
+.ts__app-info-item:nth-child(odd) {
+    background: #434357;
+}
+
+.ts__app-info-item:hover {
+    background: #313143;
+    transition: .2s;
+}
+
+.ts__app-info-item i {
+    width: 25px;
+    margin-right: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.ts__app-info-title {
+    font-weight: 400;
+}
+
+.ts__app-info-title span {
+    font-weight: 600;
+    margin-left: 10px;
+}

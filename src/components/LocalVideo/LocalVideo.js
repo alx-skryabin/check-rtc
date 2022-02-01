@@ -4,6 +4,8 @@ export default function LocalVideo({visible}) {
     visible = visible ? 'block' : 'none'
 
     return (
-        <video id="localVideo" style={{display: visible}} playsInline autoPlay muted/>
+        <div className="ts__app-stream">
+            <video id="localVideo" style={{display: visible}} playsInline autoPlay muted/>
+        </div>
     )
 }

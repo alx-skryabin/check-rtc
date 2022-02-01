@@ -37,10 +37,6 @@
     letter-spacing: 1px;
 }
 
-.ts__app-result {
-    /*border: 1px solid red;*/
-}
-
 .ts__app-devices {
     display: flex;
     justify-content: center;
@@ -67,13 +63,13 @@
 
 .ts__app-stream {
     display: flex;
-    border-radius: 5px;
-    overflow: hidden;
-    max-width: 300px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 .ts__app-stream video {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
+    margin-bottom: 30px;
 }

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import LocalVideo from '../LocalVideo/LocalVideo'
+import UserInfo from '../UserInfo/UserInfo'
 import Context from '../../context'
 
 
@@ -20,13 +21,9 @@ export default function Result() {
                 </div>
             </div>
 
-            <div className="ts__app-stream">
-                <LocalVideo visible={isStarted}/>
-            </div>
+            <LocalVideo visible={isStarted}/>
 
-            <div className="ts__app-info">
-
-            </div>
+            <UserInfo/>
         </div>
     )
 }

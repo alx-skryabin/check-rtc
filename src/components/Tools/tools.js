@@ -17,4 +17,8 @@ function parseDevices(list) {
     return res
 }
 
-export {parseDevices}
+function defEnableDebug() {
+    return window.location.hostname === 'localhost'
+}
+
+export {parseDevices, defEnableDebug}

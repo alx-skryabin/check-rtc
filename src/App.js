@@ -2,17 +2,17 @@ import React from 'react'
 import Context from './context'
 import Container from './components/Container/Container'
 import Loader from './components/Loader/Loader'
-import {parseDevices} from './components/Tools/tools'
+import {defEnableDebug, parseDevices} from './components/Tools/tools'
 import './App.css'
 
 const initialState = {
     isStarted: false,
-    isFinish: false, //!!!
     loader: true,
     devices: {
         audio: false,
         video: false
-    }
+    },
+    debug: defEnableDebug()
 }
 
 export default class App extends React.Component {
@@ -69,7 +69,10 @@ export default class App extends React.Component {
                 console.log(e)
                 $btn.innerText = 'Запустить тест'
                 $btn.setAttribute('data-action', 'start')
-                window.M.toast({html: '<i class="fas fa-exclamation-triangle"/> Необходимо дать разрешения браузеру на использование камеры и микрофона', classes: 'rounded'})
+                window.M.toast({
+                    html: '<i class="fas fa-exclamation-triangle"/> Необходимо дать разрешения браузеру на использование камеры и микрофона',
+                    classes: 'rounded'
+                })
             })
     }
 
@@ -101,8 +104,8 @@ export default class App extends React.Component {
         return (
             <Context.Provider value={this.methods}>
                 <div className="ts__app" onClick={this.handlers.bind(this)}>
-                    <h1 className="ts__app-title">WebRTC testing</h1>
-                    <i className="fas fa-bug ts__app-debug" data-action='debug'/>
+                    <h1 className="ts__app-title">WebRTC Testing</h1>
+                    {this.state.debug && <i className="fas fa-bug ts__app-debug" data-action='debug'/>}
 
                     {this.state.loader ? <Loader/> : <Container/>}
                 </div>
