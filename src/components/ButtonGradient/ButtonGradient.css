@@ -6,7 +6,7 @@
     text-transform: uppercase;
     cursor: pointer;
     user-select: none;
-    background: linear-gradient(-45deg, #e73c7e, #23bdec);
+    background: linear-gradient(-45deg, #1125e7, #23bdec);
     background-size: 400% 400%;
     animation: animate_gradient 3s ease infinite;
 }

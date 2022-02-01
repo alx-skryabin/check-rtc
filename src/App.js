@@ -2,7 +2,7 @@ import React from 'react'
 import Context from './context'
 import Container from './components/Container/Container'
 import Loader from './components/Loader/Loader'
-import {defEnableDebug, parseDevices} from './components/Tools/tools'
+import {defEnableDebug, parseDevices, setFavicon} from './components/Tools/tools'
 import './App.css'
 
 const initialState = {
@@ -18,6 +18,7 @@ const initialState = {
 export default class App extends React.Component {
     constructor(props) {
         super(props)
+        this.$favicon = document.querySelector('link[rel=icon]')
         this.state = {...initialState}
         this.methods = {
             getState: this.getState.bind(this),
@@ -92,6 +93,7 @@ export default class App extends React.Component {
                 .then(list => {
                     const state = this.state
                     state.devices = parseDevices(list)
+                    setFavicon(state.devices, this.$favicon)
                     state.loader = false
                     this.setState(state)
                 })

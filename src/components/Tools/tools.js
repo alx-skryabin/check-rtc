@@ -21,4 +21,16 @@ function defEnableDebug() {
     return window.location.hostname === 'localhost'
 }
 
-export {parseDevices, defEnableDebug}
+function setFavicon({audio, video}, $favicon) {
+    if (audio && video) {
+        $favicon.setAttribute('href', 'favicon/success.ico')
+    }
+    else if (audio || video) {
+        $favicon.setAttribute('href', 'favicon/warning.ico')
+    }
+    else {
+        $favicon.setAttribute('href', 'favicon/error.ico')
+    }
+}
+
+export {parseDevices, defEnableDebug, setFavicon}

@@ -16,6 +16,7 @@
     font-size: 2em;
     text-align: center;
     color: #eee;
+    margin-top: 20px;
 }
 
 .ts__app-loader {
@@ -51,10 +52,12 @@
 
 .ts__app-devices__error {
     color: tomato;
+    opacity: .8;
 }
 
 .ts__app-devices__success {
     color: lime;
+    opacity: .8;
 }
 
 .ts__app-devices-item i {
