@@ -16,11 +16,11 @@ export default function Result() {
     return (
         <div className='ts__app-result'>
             <div className="ts__app-devices">
-                <div className={defineStatusDevice(video)} data-position="bottom" data-tooltip={video ? 'Подключена' : 'Неподключена'}>
+                <div className={defineStatusDevice(video)} data-position="bottom" data-tooltip={video ? 'Подключена' : 'Не подключена'}>
                     <i className="fas fa-video"/>
                     <span>Камера</span>
                 </div>
-                <div className={defineStatusDevice(audio)} data-position="bottom" data-tooltip={audio ? 'Подключен' : 'Неподключен'}>
+                <div className={defineStatusDevice(audio)} data-position="bottom" data-tooltip={audio ? 'Подключен' : 'Не подключен'}>
                     <i className="fas fa-microphone"/>
                     <span>Микрофон</span>
                 </div>

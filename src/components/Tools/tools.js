@@ -77,9 +77,8 @@ function detectSpeed() {
         const endTime = (new Date()).getTime()
         const duration = Math.round((endTime - startTime) / 1000)
         const speedBps = Math.round((downloadSize * 8) / duration)
-        const speedKbps = (speedBps / 1024).toFixed(2)
-        const speedMbps = (speedKbps / 1024).toFixed(2)
-        document.querySelector('#speedEnthernet').innerHTML = speedMbps + ' Mbps'
+        const speedMbps = (speedBps / 1024 / 1024).toFixed(2)
+        document.querySelector('#speedEnthernet').innerHTML = speedMbps + ' Мб/c'
     }
 }
 
