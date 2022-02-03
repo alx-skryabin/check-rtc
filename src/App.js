@@ -61,6 +61,8 @@ export default class App extends React.Component {
                 $video.srcObject = stream
 
                 $video.onloadeddata = () => {
+                    $video.muted = false
+                    $video.play()
                     const state = this.state
                     state.isStarted = true
                     this.setState(state)
