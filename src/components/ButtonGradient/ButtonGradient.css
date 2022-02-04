@@ -1,37 +1,41 @@
 .animate-gradient {
-    border-radius: 40px;
-    letter-spacing: 2px;
+    border: none;
+    border-radius: 15px;
+    letter-spacing: 1px;
     text-align: center;
     color: #FFFFFF;
     text-transform: uppercase;
     cursor: pointer;
     user-select: none;
-    background: linear-gradient(-45deg, #1125e7, #23bdec);
+    background: linear-gradient(-90deg, #1125e7, #23bdec);
     background-size: 400% 400%;
-    animation: animate_gradient 3s ease infinite;
-}
-
-.animate-gradient[data-action="disabled"] {
-    opacity: .7;
-    cursor: default;
+    animation: animate_gradient 5s ease infinite;
 }
 
 .animate-gradient-medium {
-    height: 56px;
-    line-height: 56px;
-    font-size: 20px;
-    padding: 0 30px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+    padding: 0 20px;
 }
 
 .animate-gradient-small {
-    height: 38px;
-    line-height: 38px;
-    font-size: 16px;
-    padding: 0 20px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 12px;
+    padding: 0 15px;
 }
 
 .animate-gradient:hover {
     animation: none;
+}
+
+.animate-gradient:disabled,
+.animate-gradient[disabled] {
+    animation: none;
+    color: #333;
+    opacity: .7;
+    cursor: default;
 }
 
 @keyframes animate_gradient {

@@ -1,0 +1,38 @@
+.ts__app-streams {
+    border: 1px solid lime;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ts__app-streams-hidden {
+    height: 0;
+    overflow: hidden;
+}
+
+.ts__app-streams-item {
+    max-width: 300px;
+    min-width: 200px;
+    margin-bottom: 30px;
+}
+
+.ts__app-streams-item div {
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.ts__app-streams video {
+    border: 1px solid gold;
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    background: #ccc;
+}
+
+@media (max-width: 500px) {
+    .ts__app-streams {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}

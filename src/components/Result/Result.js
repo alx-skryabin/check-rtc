@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react'
-import LocalVideo from '../LocalVideo/LocalVideo'
+import VideoStreams from '../VideoStreams/VideoStreams'
 import UserInfo from '../UserInfo/UserInfo'
 import Context from '../../context'
 
@@ -17,18 +17,18 @@ export default function Result() {
         <div className='ts__app-result'>
             <div className="ts__app-devices">
                 <div className={defineStatusDevice(video)} data-position="bottom" data-tooltip={video ? 'Подключена' : 'Не подключена'}>
-                    <i className="fas fa-video"/>
+                    {video ? <i className="fas fa-video"/> : <i className="fas fa-video-slash"/>}
                     <span>Камера</span>
                 </div>
                 <div className={defineStatusDevice(audio)} data-position="bottom" data-tooltip={audio ? 'Подключен' : 'Не подключен'}>
-                    <i className="fas fa-microphone"/>
+                    {audio ? <i className="fas fa-microphone"/> : <i className="fas fa-microphone-slash"/>}
                     <span>Микрофон</span>
                 </div>
             </div>
 
-            <LocalVideo visible={isStarted}/>
+            <VideoStreams visible={isStarted}/>
 
-            <UserInfo/>
+            {/*<UserInfo/>*/}
         </div>
     )
 }
