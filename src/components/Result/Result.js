@@ -3,10 +3,9 @@ import VideoStreams from '../VideoStreams/VideoStreams'
 import UserInfo from '../UserInfo/UserInfo'
 import Context from '../../context'
 
-
 export default function Result() {
-    const context = useContext(Context)
-    const {devices: {audio, video}, isStarted} = context.getState()
+    const state = useContext(Context).getState()
+    const {devices: {audio, video}, isStarted, isCalling} = state
 
     useEffect(() => {
         const elems = document.querySelectorAll('.tooltipped')
@@ -16,19 +15,27 @@ export default function Result() {
     return (
         <div className='ts__app-result'>
             <div className="ts__app-devices">
-                <div className={defineStatusDevice(video)} data-position="bottom" data-tooltip={video ? 'Подключена' : 'Не подключена'}>
+                <div
+                  className={defineStatusDevice(video)}
+                  data-position="bottom"
+                  data-tooltip={video ? 'Подключено' : 'Не подключено'}
+                >
                     {video ? <i className="fas fa-video"/> : <i className="fas fa-video-slash"/>}
                     <span>Камера</span>
                 </div>
-                <div className={defineStatusDevice(audio)} data-position="bottom" data-tooltip={audio ? 'Подключен' : 'Не подключен'}>
+                <div
+                  className={defineStatusDevice(audio)}
+                  data-position="bottom"
+                  data-tooltip={audio ? 'Подключено' : 'Не подключено'}
+                >
                     {audio ? <i className="fas fa-microphone"/> : <i className="fas fa-microphone-slash"/>}
                     <span>Микрофон</span>
                 </div>
             </div>
 
-            <VideoStreams visible={isStarted}/>
+            <VideoStreams isStarted={isStarted} isCalling={isCalling}/>
 
-            {/*<UserInfo/>*/}
+            <UserInfo/>
         </div>
     )
 }

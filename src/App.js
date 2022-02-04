@@ -116,6 +116,7 @@ export default class App extends React.Component {
         this.pc2.onaddstream = e => {
             this.remoteStream = e.stream
             this.$remoteVideo.srcObject = this.remoteStream
+            this.setState({isCalling: true})
         }
 
         this.pc1.addStream(this.localStream)
@@ -124,8 +125,31 @@ export default class App extends React.Component {
             .then(this.onCreateOfferSuccess.bind(this))
     }
 
+    hangup() {
+        this.endCall()
+        this.setState({isCalling: false})
+    }
+
     stop() {
-        this.setState({isStarted: false})
+        this.endCall()
+        this.disableStreams()
+        this.setState({isStarted: false, isCalling: false})
+    }
+
+    endCall() {
+        if (!this.state.isCalling) return;
+
+        this.pc1.close()
+        this.pc2.close()
+        this.pc1 = null
+        this.pc2 = null
+    }
+
+    disableStreams() {
+        const videoTracks = this.localStream.getVideoTracks()
+        const audioTracks = this.localStream.getAudioTracks()
+        videoTracks[0].stop()
+        audioTracks[0].stop()
     }
 
     componentDidMount() {
@@ -203,21 +227,6 @@ export default class App extends React.Component {
             () => console.log(22, 'setRemoteDescription complete - pc2'),
             () => console.log('Failed to set session description - pc2')
         )
-    }
-
-    // hangup call
-    hangup() {
-        console.log('end call')
-        // console.log('hangup', this.pc1, this.pc2)
-        const videoTracks = this.localStream.getVideoTracks()
-        const audioTracks = this.localStream.getAudioTracks()
-        videoTracks[0].stop()
-        audioTracks[0].stop()
-
-        this.pc1.close()
-        this.pc2.close()
-        this.pc1 = null
-        this.pc2 = null
     }
 
     getNamePc(pc) {

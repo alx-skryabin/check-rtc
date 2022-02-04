@@ -33,8 +33,8 @@
 .animate-gradient:disabled,
 .animate-gradient[disabled] {
     animation: none;
-    color: #333;
-    opacity: .7;
+    color: #222;
+    opacity: .4;
     cursor: default;
 }
 

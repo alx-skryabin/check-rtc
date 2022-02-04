@@ -1,14 +1,20 @@
-import React, {useContext} from 'react'
-import {detectBrowser, detectOS, detectSpeed} from '../Tools/tools'
+import React, {useContext, useEffect, useState} from 'react'
+import {detectBrowser, detectDevice, detectOS, detectSpeed, getIP} from '../Tools/tools'
 import Context from '../../context'
 import './UserInfo.css'
 
 export default function UserInfo() {
-    const context = useContext(Context)
+    const [ip, setIp] = useState('0.0.0.0000')
+    const state = useContext(Context).getState()
+    const {audio, video} = state.devices
     const {language, onLine, userAgent} = navigator
-    const {audio, video} = context.getState().devices
 
-    detectSpeed()
+    useEffect(() => {
+      detectSpeed()
+      getIP().then(r => {
+        setIp(r.ip)
+      })
+    }, [])
 
     return (
         <div className="ts__app-info">
@@ -16,14 +22,21 @@ export default function UserInfo() {
                 <i className="fas fa-video"/>
                 <div className="ts__app-info-title">
                     Камера:
-                    <span>{video ? 'Подключена' : 'Не подключена'}</span>
+                    <span>{video ? 'Подключено' : 'Не подключено'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-microphone"/>
                 <div className="ts__app-info-title">
                     Микрофон:
-                    <span>{audio ? 'Подключен' : 'Не подключен'}</span>
+                    <span>{audio ? 'Подключено' : 'Не подключено'}</span>
+                </div>
+            </div>
+            <div className="ts__app-info-item">
+                <i className="far fa-address-book"/>
+                <div className="ts__app-info-title">
+                    IP адрес:
+                    <span>{ip}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
@@ -86,13 +99,6 @@ export default function UserInfo() {
     )
 }
 
-function detectDevice(userAgent) {
-    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(userAgent))
-        ? 'Мобильное устройство' : 'Персональный компьютер'
-}
 
-function getIP() {
-    // работает, сделать через useEffect
-    return fetch('https://api.ipify.org?format=json')
-        .then(r => r.json().ip)
-}
+
+

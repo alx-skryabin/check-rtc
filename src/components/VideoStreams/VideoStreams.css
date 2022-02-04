@@ -1,11 +1,10 @@
 .ts__app-streams {
-    border: 1px solid lime;
     display: flex;
     justify-content: space-around;
 }
 
 .ts__app-streams-hidden {
-    height: 0;
+    display: none;
     overflow: hidden;
 }
 
@@ -22,7 +21,6 @@
 }
 
 .ts__app-streams video {
-    border: 1px solid gold;
     display: flex;
     width: 100%;
     border-radius: 10px;

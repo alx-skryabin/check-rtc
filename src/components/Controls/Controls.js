@@ -3,8 +3,8 @@ import ButtonGradient from '../ButtonGradient/ButtonGradient'
 import Context from '../../context'
 
 export default function Controls() {
-    const context = useContext(Context).getState()
-    const {devices: {audio, video}, isStarted, isCalling} = context
+    const state = useContext(Context).getState()
+    const {devices: {audio, video}, isStarted, isCalling} = state
 
     const ViewControl = () => {
         if (!audio || !video) {

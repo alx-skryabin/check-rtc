@@ -33,6 +33,11 @@ function setFavicon({audio, video}, $favicon) {
     }
 }
 
+function detectDevice(userAgent) {
+    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(userAgent))
+      ? 'Мобильное устройство' : 'Персональный компьютер'
+}
+
 function detectBrowser() {
     const ua = navigator.userAgent;
     let tem;
@@ -61,7 +66,7 @@ function detectOS() {
     if (window.navigator.userAgent.indexOf('Windows NT 5.0') !== -1) OSName = 'Windows 2000'
     if (window.navigator.userAgent.indexOf('Mac') !== -1) OSName = 'Mac/iOS'
     if (window.navigator.userAgent.indexOf('X11') !== -1) OSName = 'UNIX'
-    if (window.navigator.userAgent.indexOf('Linux') !== -1) OSName = 'Linux'
+    if (window.navigator.userAgent.indexOf('Linux') !== -1) OSName = 'Android'
     return OSName
 }
 
@@ -82,4 +87,9 @@ function detectSpeed() {
     }
 }
 
-export {parseDevices, defEnableDebug, setFavicon, detectBrowser, detectOS, detectSpeed}
+function getIP() {
+    return fetch('https://api.ipify.org?format=json')
+      .then(r => r.json())
+}
+
+export {parseDevices, defEnableDebug, setFavicon, detectBrowser, detectOS, detectSpeed, detectDevice, getIP}
