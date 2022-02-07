@@ -91,7 +91,7 @@ export default function UserInfo() {
             <div className="ts__app-info-item">
                 <i className="fas fa-tachometer-alt"/>
                 <div className="ts__app-info-title">
-                    Скорость интернета:
+                    Скорость соединения:
                     <span id="speedEnthernet"><i className="fas fa-spinner fa-spin"/></span>
                 </div>
             </div>
