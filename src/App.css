@@ -52,6 +52,7 @@
 .ts__app-devices-item {
     padding: 5px 15px;
     font-size: 1.2rem;
+    cursor: default;
 }
 
 .ts__app-devices__error {
@@ -66,4 +67,15 @@
 
 .ts__app-devices-item i {
     margin-right: 5px;
+}
+
+@media (max-width: 500px) {
+    .ts__app {
+        padding: 0 10px 20px;
+    }
+
+    .ts__app-debug {
+        top: 10px;
+        left: 10px;
+    }
 }

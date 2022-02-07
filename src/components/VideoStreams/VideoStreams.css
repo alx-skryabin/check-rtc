@@ -1,6 +1,6 @@
 .ts__app-streams {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .ts__app-streams-hidden {
@@ -11,7 +11,7 @@
 .ts__app-streams-item {
     max-width: 300px;
     min-width: 200px;
-    margin-bottom: 30px;
+    margin: 0 10px 30px;
 }
 
 .ts__app-streams-item div {
@@ -32,5 +32,10 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+    }
+
+    .ts__app-streams-item {
+        max-width: 100%;
+        margin: 0 0 30px;
     }
 }

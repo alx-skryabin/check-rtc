@@ -4,10 +4,9 @@ import './ButtonGradient.css'
 export default function ButtonGradient({
                                            action,
                                            text,
-                                           size = 'medium',
                                            disabled = false
                                        }) {
-    const classes = `animate-gradient animate-gradient-${size} waves-effect waves-light`
+    const classes = `animate-gradient waves-effect waves-light ${defineClassStatus(action)}`
 
     return (
         <button
@@ -18,4 +17,9 @@ export default function ButtonGradient({
             {text}
         </button>
     )
+}
+
+function defineClassStatus(action) {
+    return (action === 'hangup' || action === 'stop')
+    ? 'animate-gradient-warn' : ''
 }

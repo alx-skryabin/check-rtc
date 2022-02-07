@@ -13,9 +13,8 @@ export default function Controls() {
         else {
             return (
                 <>
-                    <ButtonGradient action='start' text='Старт' disabled={isStarted}/>
+                    <ToggleStartButton isStarted={isStarted}/>
                     <ToggleCallButton props={{isStarted, isCalling}}/>
-                    <ButtonGradient action='stop' text='Завершить' disabled={!isStarted}/>
                 </>
             )
         }
@@ -26,6 +25,14 @@ export default function Controls() {
             <ViewControl/>
         </div>
     )
+}
+
+function ToggleStartButton({isStarted}) {
+    if (isStarted) {
+        return <ButtonGradient action='stop' text='Завершить'/>
+    }
+
+    return <ButtonGradient action='start' text='Старт'/>
 }
 
 function ToggleCallButton({props}) {
