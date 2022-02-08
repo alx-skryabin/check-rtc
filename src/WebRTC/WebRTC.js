@@ -31,7 +31,9 @@ export default class WebRTC {
             setState({isCalling: true})
         }
 
-        this.pc1.addStream(this.localStream)
+        // this.pc1.addStream(this.localStream) // not work in safari
+        this.localStream.getTracks()
+            .forEach(track => this.pc1.addTrack(track, this.localStream))
 
         this.pc1.createOffer(offerOptions)
             .then(this.onCreateOfferSuccess.bind(this))
