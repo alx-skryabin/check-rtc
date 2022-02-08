@@ -25,8 +25,8 @@ export default class WebRTC {
             this.onIceCandidate(this.pc2, e)
         }
 
-        this.pc2.ontrack = e => {//onaddstream ontrack
-            console.info('onaddstream', e.streams[0])
+        // onaddstream event not work on safari
+        this.pc2.ontrack = e => {
             this.remoteStream = e.streams[0]
             this.$remoteVideo.srcObject = this.remoteStream
             setState({isCalling: true})
