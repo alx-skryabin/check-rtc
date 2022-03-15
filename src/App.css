@@ -39,7 +39,7 @@
 
 .ts__app-controls-not-device {
     color: gold;
-    letter-spacing: 1px;
+    text-align: center;
 }
 
 .ts__app-devices {

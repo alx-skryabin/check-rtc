@@ -12,6 +12,7 @@
 /build
 .idea
 .firebase
+.github
 
 # misc
 .DS_Store

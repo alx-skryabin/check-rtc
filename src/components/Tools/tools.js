@@ -4,13 +4,13 @@ function parseDevices(list) {
         video: false
     }
 
-    list.map(({kind}) => {
+    list.map(({kind, label}) => {
         if (kind === 'audioinput') {
-            res.audio = true
+            res.audio = label || true
         }
 
         if (kind === 'videoinput') {
-            res.video = true
+            res.video = label || true
         }
     })
 

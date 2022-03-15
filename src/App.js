@@ -73,7 +73,11 @@ export default class App extends React.Component {
                 this.webRTC.$localVideo.srcObject = stream
 
                 this.webRTC.$localVideo.onloadeddata = () => {
-                    this.setState({isStarted: true})
+                    navigator.mediaDevices.enumerateDevices()
+                        .then(list => {
+                            const devices = parseDevices(list)
+                            this.setState({devices, isStarted: true})
+                        })
                 }
             })
             .catch(e => {
@@ -127,7 +131,7 @@ export default class App extends React.Component {
         return (
             <Context.Provider value={this.methods}>
                 <div className="ts__app" onClick={this.handlers.bind(this)}>
-                    <h1 className="ts__app-title">WebRTC Testing</h1>
+                    <h1 className="ts__app-title">Диагностика видеоконсультации</h1>
                     {this.state.debug && <i className="fas fa-bug ts__app-debug" data-action='debug'/>}
 
                     {this.state.loader ? <Loader/> : <Container/>}

@@ -22,14 +22,14 @@ export default function UserInfo() {
                 <i className="fas fa-video"/>
                 <div className="ts__app-info-title">
                     Камера:
-                    <span>{video ? 'Подключено' : 'Не подключено'}</span>
+                    <span>{video || 'Не подключено'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-microphone"/>
                 <div className="ts__app-info-title">
                     Микрофон:
-                    <span>{audio ? 'Подключено' : 'Не подключено'}</span>
+                    <span>{audio || 'Не подключено'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
