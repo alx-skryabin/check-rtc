@@ -16,21 +16,26 @@ export default function Result() {
         <div className='ts__app-result'>
             <div className="ts__app-devices">
                 <div
-                  className={defineStatusDevice(video)}
-                  data-position="bottom"
-                  data-tooltip={video ? 'Подключено' : 'Не подключено'}
+                    className={defineStatusDevice(video)}
+                    data-position="bottom"
+                    data-tooltip={video ? 'Подключено' : 'Не подключено'}
                 >
                     {video ? <i className="fas fa-video"/> : <i className="fas fa-video-slash"/>}
                     <span>Камера</span>
                 </div>
                 <div
-                  className={defineStatusDevice(audio)}
-                  data-position="bottom"
-                  data-tooltip={audio ? 'Подключено' : 'Не подключено'}
+                    className={defineStatusDevice(audio)}
+                    data-position="bottom"
+                    data-tooltip={audio ? 'Подключено' : 'Не подключено'}
                 >
                     {audio ? <i className="fas fa-microphone"/> : <i className="fas fa-microphone-slash"/>}
                     <span>Микрофон</span>
                 </div>
+            </div>
+
+            <div id="SoundMeter" className='ts__meters' style={{display: isStarted ? 'flex' : 'none'}}>
+                <meter high="0.25" max="1" value="0"/>
+                <div/>
             </div>
 
             <VideoStreams isStarted={isStarted} isCalling={isCalling}/>

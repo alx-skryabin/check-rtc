@@ -1,0 +1,12 @@
+.ts__meters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.ts__meters meter {
+    width: 200px;
+    margin: 0 10px;
+}

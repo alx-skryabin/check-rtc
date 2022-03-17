@@ -5,7 +5,7 @@ export default function VideoStreams({isStarted, isCalling}) {
     return (
         <div className={`ts__app-streams ${isStarted ? '' : 'ts__app-streams-hidden'}`}>
             <div className="ts__app-streams-item">
-                <div>Local</div>
+                <div>Self</div>
                 <video
                     id="localVideo"
                     playsInline
@@ -14,7 +14,7 @@ export default function VideoStreams({isStarted, isCalling}) {
             </div>
 
             <div className={`ts__app-streams-item ${isCalling ? '' : 'ts__app-streams-hidden'}`}>
-                <div>Remote</div>
+                <div>Caller</div>
                 <video
                     id="remoteVideo"
                     playsInline

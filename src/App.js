@@ -3,6 +3,7 @@ import Context from './context'
 import Loader from './components/Loader/Loader'
 import Container from './components/Container/Container'
 import WebRTC from './WebRTC/WebRTC'
+import SoundLine from './components/SoundMeter/SoundLine'
 import {defEnableDebug, parseDevices, setFavicon} from './components/Tools/tools'
 import './App.css'
 
@@ -33,6 +34,7 @@ export default class App extends React.Component {
         }
 
         this.webRTC = null
+        this.soundLine = new SoundLine()
     }
 
     handlers(e) {
@@ -41,19 +43,19 @@ export default class App extends React.Component {
 
         switch (action) {
             case 'start':
-                console.info('start')
+                console.info('start stream')
                 this.start(e.target)
                 break
             case 'stop':
-                console.info('stop')
+                console.info('stop all')
                 this.stop()
                 break
             case 'call':
-                console.info('call')
+                console.info('calling')
                 this.call(e.target)
                 break
             case 'hangup':
-                console.info('hangup')
+                console.info('hangup call')
                 this.hangup()
                 break
             case 'debug':
@@ -71,6 +73,7 @@ export default class App extends React.Component {
             .then(stream => {
                 this.webRTC.localStream = stream
                 this.webRTC.$localVideo.srcObject = stream
+                this.soundLine.runSoundLine(stream)
 
                 this.webRTC.$localVideo.onloadeddata = () => {
                     navigator.mediaDevices.enumerateDevices()
@@ -106,6 +109,7 @@ export default class App extends React.Component {
     stop() {
         if (this.state.isCalling) this.webRTC.disconnectCall()
         this.webRTC.disableStreams()
+        this.soundLine.resetSoundLine()
         this.setState({isStarted: false, isCalling: false})
     }
 
@@ -121,6 +125,7 @@ export default class App extends React.Component {
                     setFavicon(devices, this.$favicon)
                     this.setState({devices, loader: false})
                     this.webRTC = new WebRTC()
+                    this.soundLine.initElem()
                 })
         } catch (e) {
             console.log('Не подключены устройства', e)
