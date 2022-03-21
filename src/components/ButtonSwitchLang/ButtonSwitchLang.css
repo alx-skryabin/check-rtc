@@ -1,0 +1,28 @@
+.ts__app-lang {
+    background: rgba(255, 255, 255, .3);
+    padding: 0 5px;
+    width: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: .2s;
+}
+
+.ts__app-lang:hover {
+    background: rgba(255, 255, 255, .5);
+    transition: .2s;
+}
+
+@media (max-width: 500px) {
+    .ts__app-lang {
+        top: 10px;
+        right: 10px;
+    }
+}

@@ -1,3 +1,5 @@
+import I18n from '../../I18n/I18n'
+
 function parseDevices(list) {
     const res = {
         audio: false,
@@ -35,7 +37,7 @@ function setFavicon({audio, video}, $favicon) {
 
 function detectDevice(userAgent) {
     return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(userAgent))
-      ? 'Мобильное устройство' : 'Персональный компьютер'
+        ? I18n.t('userInfo.device.mobile') : I18n.t('userInfo.device.pc')
 }
 
 function detectBrowser() {
@@ -83,13 +85,14 @@ function detectSpeed() {
         const duration = Math.round((endTime - startTime) / 1000)
         const speedBps = Math.round((downloadSize * 8) / duration)
         const speedMbps = (speedBps / 1024 / 1024).toFixed(2)
-        document.querySelector('#speedEnthernet').innerHTML = speedMbps + ' Мб/c'
+        document.querySelector('#speedEnthernet')
+            .innerHTML = `${speedMbps}  ${I18n.t('userInfo.speed.si')}`
     }
 }
 
 function getIP() {
     return fetch('https://api.ipify.org?format=json')
-      .then(r => r.json())
+        .then(r => r.json())
 }
 
 export {parseDevices, defEnableDebug, setFavicon, detectBrowser, detectOS, detectSpeed, detectDevice, getIP}

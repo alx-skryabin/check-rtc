@@ -1,9 +1,11 @@
 import React from 'react'
 import Context from './context'
+import Header from './components/Header/Header'
 import Loader from './components/Loader/Loader'
 import Container from './components/Container/Container'
 import WebRTC from './WebRTC/WebRTC'
 import SoundLine from './components/SoundMeter/SoundLine'
+import I18n from './I18n/I18n'
 import {defEnableDebug, parseDevices, setFavicon} from './components/Tools/tools'
 import './App.css'
 
@@ -13,6 +15,7 @@ const requestedDevices = {
 }
 
 const initialState = {
+    lang: I18n.defaultLang,
     isStarted: false,
     isCalling: false,
     loader: true,
@@ -28,7 +31,7 @@ export default class App extends React.Component {
         super(props)
         this.$favicon = document.querySelector('link[rel=icon]')
         this.state = {...initialState}
-        this.methods = {
+        this.data = {
             getState: () => this.state,
             updateState: state => this.setState(state)
         }
@@ -58,6 +61,10 @@ export default class App extends React.Component {
                 console.info('hangup call')
                 this.hangup()
                 break
+            case 'lang':
+                console.info('change lang')
+                this.switchLang(e.target.dataset.lang)
+                break
             case 'debug':
                 console.info('debug:')
                 console.dir(this.state)
@@ -66,7 +73,7 @@ export default class App extends React.Component {
     }
 
     start($btn) {
-        $btn.innerText = 'Загрузка...'
+        $btn.innerText = I18n.t('buttons.loading')
         $btn.disabled = true
 
         navigator.mediaDevices.getUserMedia(requestedDevices)
@@ -85,7 +92,7 @@ export default class App extends React.Component {
             })
             .catch(e => {
                 console.log(e)
-                $btn.innerText = 'Старт'
+                $btn.innerText = I18n.t('buttons.start')
                 $btn.disabled = false
                 window.M.toast({
                     html: '<i class="fas fa-exclamation-triangle"/> Необходимо дать разрешения браузеру на использование камеры и микрофона',
@@ -132,12 +139,15 @@ export default class App extends React.Component {
         }
     }
 
+    switchLang(current) {
+        this.setState({lang: I18n.anotherLang(current)})
+    }
+
     render() {
         return (
-            <Context.Provider value={this.methods}>
+            <Context.Provider value={this.data}>
                 <div className="ts__app" onClick={this.handlers.bind(this)}>
-                    <h1 className="ts__app-title">Диагностика видеоконсультации</h1>
-                    {this.state.debug && <i className="fas fa-bug ts__app-debug" data-action='debug'/>}
+                    <Header/>
 
                     {this.state.loader ? <Loader/> : <Container/>}
                 </div>

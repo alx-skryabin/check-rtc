@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {detectBrowser, detectDevice, detectOS, detectSpeed, getIP} from '../Tools/tools'
 import Context from '../../context'
+import I18n from '../../I18n/I18n'
 import './UserInfo.css'
 
 export default function UserInfo() {
@@ -21,15 +22,15 @@ export default function UserInfo() {
             <div className="ts__app-info-item">
                 <i className="fas fa-video"/>
                 <div className="ts__app-info-title">
-                    Камера:
-                    <span>{video || 'Не подключено'}</span>
+                    {I18n.t('userInfo.camera.label')}:
+                    <span>{video || I18n.t('userInfo.camera.value')}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-microphone"/>
                 <div className="ts__app-info-title">
-                    Микрофон:
-                    <span>{audio || 'Не подключено'}</span>
+                    {I18n.t('userInfo.microphone.label')}:
+                    <span>{audio || I18n.t('userInfo.microphone.value')}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
@@ -49,7 +50,7 @@ export default function UserInfo() {
             <div className="ts__app-info-item">
                 <i className="fas fa-desktop"/>
                 <div className="ts__app-info-title">
-                    Устройство:
+                    {I18n.t('userInfo.device.label')}:
                     <span>{detectDevice(userAgent)}</span>
                 </div>
             </div>
@@ -91,7 +92,7 @@ export default function UserInfo() {
             <div className="ts__app-info-item">
                 <i className="fas fa-tachometer-alt"/>
                 <div className="ts__app-info-title">
-                    Скорость соединения:
+                    {I18n.t('userInfo.speed.label')}:
                     <span id="speedEnthernet"><i className="fas fa-spinner fa-spin"/></span>
                 </div>
             </div>
