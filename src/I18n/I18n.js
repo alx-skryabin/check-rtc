@@ -19,9 +19,14 @@ export default class I18n {
 
         if (!path || typeof path !== 'string') return empty
 
-        const result = path.split('.')
-            .reduce((all, item) => all[item], base)
+        try {
+            const result = path.split('.')
+                .reduce((all, item) => all[item], base)
 
-        return typeof result === 'string' ? result : empty
+            return typeof result === 'string' ? result : empty
+        } catch (e) {
+            console.warn(path, '- path translate not exist!')
+            return path
+        }
     }
 }
