@@ -1,5 +1,5 @@
 export default class Theme {
-    static #defaultTheme = 'light' // dark or light
+    static #defaultTheme = 'dark' // dark or light
     static #selectedTheme = null
 
     static get defineTheme() {
