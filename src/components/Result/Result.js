@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import VideoStreams from '../VideoStreams/VideoStreams'
 import UserInfo from '../UserInfo/UserInfo'
 import Context from '../../context'
+import I18n from '../../I18n/I18n'
 
 export default function Result() {
     const state = useContext(Context).getState()
@@ -18,18 +19,18 @@ export default function Result() {
                 <div
                     className={defineStatusDevice(video)}
                     data-position="bottom"
-                    data-tooltip={video ? 'Подключено' : 'Не подключено'}
+                    data-tooltip={video ? I18n.t('tips.connected') : I18n.t('tips.notConnected')}
                 >
                     {video ? <i className="fas fa-video"/> : <i className="fas fa-video-slash"/>}
-                    <span>Камера</span>
+                    <span>{I18n.t('userInfo.camera.label')}</span>
                 </div>
                 <div
                     className={defineStatusDevice(audio)}
                     data-position="bottom"
-                    data-tooltip={audio ? 'Подключено' : 'Не подключено'}
+                    data-tooltip={audio ? I18n.t('tips.connected') : I18n.t('tips.notConnected')}
                 >
                     {audio ? <i className="fas fa-microphone"/> : <i className="fas fa-microphone-slash"/>}
-                    <span>Микрофон</span>
+                    <span>{I18n.t('userInfo.microphone.label')}</span>
                 </div>
             </div>
 

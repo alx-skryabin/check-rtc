@@ -95,14 +95,14 @@ export default class App extends React.Component {
                 $btn.innerText = I18n.t('buttons.start')
                 $btn.disabled = false
                 window.M.toast({
-                    html: '<i class="fas fa-exclamation-triangle"/> Необходимо дать разрешения браузеру на использование камеры и микрофона',
+                    html: `<i class="fas fa-exclamation-triangle"/> ${I18n.t('tips.mustAccess')}`,
                     classes: 'rounded'
                 })
             })
     }
 
     call($btn) {
-        $btn.innerText = 'Загрузка...'
+        $btn.innerText = I18n.t('buttons.loading')
         $btn.disabled = true
 
         this.webRTC.connectCall(this.setState.bind(this))

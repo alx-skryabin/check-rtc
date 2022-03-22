@@ -36,7 +36,7 @@ export default function UserInfo() {
             <div className="ts__app-info-item">
                 <i className="far fa-address-book"/>
                 <div className="ts__app-info-title">
-                    IP адрес:
+                    {I18n.t('userInfo.IPaddress.label')}:
                     <span>{ip}</span>
                 </div>
             </div>
@@ -44,7 +44,7 @@ export default function UserInfo() {
                 <i className="fas fa-microchip"/>
                 <div className="ts__app-info-title">
                     RTCPeerConnection:
-                    <span>{new RTCPeerConnection(null) ? 'Да' : 'unknown'}</span>
+                    <span>{new RTCPeerConnection(null) ? I18n.t('simple.yes') : 'unknown'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
@@ -57,28 +57,28 @@ export default function UserInfo() {
             <div className="ts__app-info-item">
                 <i className="fas fa-cog"/>
                 <div className="ts__app-info-title">
-                    Система:
+                    {I18n.t('userInfo.system.label')}:
                     <span>{detectOS()}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fab fa-internet-explorer"/>
                 <div className="ts__app-info-title">
-                    Браузер:
+                    {I18n.t('userInfo.browser.label')}:
                     <span>{detectBrowser()}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-expand-arrows-alt"/>
                 <div className="ts__app-info-title">
-                    Размер экрана:
+                    {I18n.t('userInfo.screenSize.label')}:
                     <span>{window.screen.width} x {window.screen.height}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-globe-americas"/>
                 <div className="ts__app-info-title">
-                    Язык:
+                    {I18n.t('userInfo.language.label')}:
                     <span>{language}</span>
                 </div>
             </div>
@@ -86,7 +86,7 @@ export default function UserInfo() {
                 <i className="fas fa-signal"/>
                 <div className="ts__app-info-title">
                     Online:
-                    <span>{onLine ? 'Да' : 'Нет'}</span>
+                    <span>{onLine ? I18n.t('simple.yes') : I18n.t('simple.no')}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
