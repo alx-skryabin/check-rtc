@@ -15,7 +15,7 @@ const requestedDevices = {
 }
 
 const initialState = {
-    lang: I18n.defaultLang,
+    lang: I18n.defineLang,
     isStarted: false,
     isCalling: false,
     loader: true,
