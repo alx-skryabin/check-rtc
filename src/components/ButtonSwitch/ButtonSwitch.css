@@ -1,0 +1,58 @@
+.ts__app-lang,
+.ts__app-theme {
+    padding: 0 5px;
+    width: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    transition: .2s;
+}
+
+.ts__app_theme-dark .ts__app-lang,
+.ts__app_theme-dark .ts__app-theme {
+    background: rgba(255, 255, 255, .1);
+    color: #fff;
+}
+
+.ts__app_theme-light .ts__app-lang,
+.ts__app_theme-light .ts__app-theme {
+    background: rgba(0, 0, 0, .2);
+    color: #333;
+}
+
+.ts__app_theme-dark .ts__app-lang:hover,
+.ts__app_theme-dark .ts__app-theme:hover {
+    background: rgba(255, 255, 255, .2);
+    transition: .2s;
+}
+
+.ts__app_theme-light .ts__app-lang:hover,
+.ts__app_theme-light .ts__app-theme:hover {
+    background: rgba(0, 0, 0, .3);
+    transition: .2s;
+}
+
+.ts__app-lang {
+    top: 20px;
+}
+
+.ts__app-theme {
+    top: 60px;
+}
+
+@media (max-width: 500px) {
+    .ts__app-lang {
+        top: 10px;
+        right: 10px;
+    }
+
+    .ts__app-theme {
+        top: 50px;
+        right: 10px;
+    }
+}

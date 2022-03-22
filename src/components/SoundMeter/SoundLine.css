@@ -2,8 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
     margin-bottom: 15px;
+}
+
+.ts__app_theme-dark .ts__meters {
+    color: #eee;
+}
+
+.ts__app_theme-light .ts__meters {
+    color: #333;
 }
 
 .ts__meters meter {

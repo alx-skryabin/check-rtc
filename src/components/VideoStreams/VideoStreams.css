@@ -15,9 +15,16 @@
 }
 
 .ts__app-streams-item div {
-    color: #ccc;
     text-align: center;
     margin-bottom: 4px;
+}
+
+.ts__app_theme-dark .ts__app-streams-item {
+    color: #eee;
+}
+
+.ts__app_theme-light .ts__app-streams-item {
+    color: #333;
 }
 
 .ts__app-streams video {

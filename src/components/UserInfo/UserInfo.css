@@ -1,7 +1,14 @@
 .ts__app-info {
-    background: #3a3a4e;
     border-radius: 5px;
     overflow: hidden;
+}
+
+.ts__app_theme-dark .ts__app-info {
+    background: #3a3a4e;
+}
+
+.ts__app_theme-light .ts__app-info {
+    background: #ccc;
 }
 
 .ts__app-info-item {
@@ -10,17 +17,35 @@
     font-size: 1.2em;
     user-select: none;
     padding: 5px 10px;
-    color: #eee;
     transition: .2s;
 }
 
-.ts__app-info-item:nth-child(odd) {
+.ts__app_theme-dark .ts__app-info-item {
+    color: #eee;
+}
+
+.ts__app_theme-light .ts__app-info-item {
+    color: #333;
+}
+
+.ts__app_theme-dark .ts__app-info-item:nth-child(odd) {
     background: #434357;
 }
 
+.ts__app_theme-light .ts__app-info-item:nth-child(odd) {
+    background: #ddd;
+}
+
 .ts__app-info-item:hover {
-    background: #313143;
     transition: .2s;
+}
+
+.ts__app_theme-dark .ts__app-info-item:hover {
+    background: #313143;
+}
+
+.ts__app_theme-light .ts__app-info-item:hover {
+    background: #adadad;
 }
 
 .ts__app-info-item i {

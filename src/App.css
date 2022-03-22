@@ -1,5 +1,14 @@
 .ts__app {
-    padding: 0 20px 20px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.ts__app_theme-dark {
+    background: #223;
+}
+
+.ts__app_theme-light {
+    background: #eee;
 }
 
 .ts__app-debug {
@@ -15,8 +24,15 @@
 .ts__app-title {
     font-size: 2em;
     text-align: center;
+    margin-top: 0;
+}
+
+.ts__app_theme-dark .ts__app-title {
     color: #eee;
-    margin-top: 20px;
+}
+
+.ts__app_theme-light .ts__app-title {
+    color: #333;
 }
 
 .ts__app-loader {
@@ -24,7 +40,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+}
+
+.ts__app_theme-dark .ts__app-loader {
+    color: #eee;
+}
+
+.ts__app_theme-light .ts__app-loader {
+    color: #333;
 }
 
 .ts__app-controls {
@@ -61,7 +84,7 @@
 }
 
 .ts__app-devices__success {
-    color: lime;
+    color: limegreen;
     opacity: .8;
 }
 
@@ -71,7 +94,7 @@
 
 @media (max-width: 500px) {
     .ts__app {
-        padding: 0 10px 20px;
+        padding: 20px 10px;
     }
 
     .ts__app-debug {

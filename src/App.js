@@ -6,6 +6,7 @@ import Container from './components/Container/Container'
 import WebRTC from './WebRTC/WebRTC'
 import SoundLine from './components/SoundMeter/SoundLine'
 import I18n from './I18n/I18n'
+import Theme from './components/Tools/Theme'
 import {defEnableDebug, parseDevices, setFavicon} from './components/Tools/tools'
 import './App.css'
 
@@ -16,6 +17,7 @@ const requestedDevices = {
 
 const initialState = {
     lang: I18n.defineLang,
+    theme: Theme.defineTheme,
     isStarted: false,
     isCalling: false,
     loader: true,
@@ -64,6 +66,10 @@ export default class App extends React.Component {
             case 'lang':
                 console.info('change lang')
                 this.switchLang(e.target.dataset.lang)
+                break
+            case 'theme':
+                console.info('change theme')
+                this.switchTheme(e.target.dataset.theme)
                 break
             case 'debug':
                 console.info('debug:')
@@ -143,10 +149,14 @@ export default class App extends React.Component {
         this.setState({lang: I18n.anotherLang(current)})
     }
 
+    switchTheme(current) {
+        this.setState({theme: Theme.changeTheme(current)})
+    }
+
     render() {
         return (
             <Context.Provider value={this.data}>
-                <div className="ts__app" onClick={this.handlers.bind(this)}>
+                <div className={Theme.defineClass} onClick={this.handlers.bind(this)}>
                     <Header/>
 
                     {this.state.loader ? <Loader/> : <Container/>}

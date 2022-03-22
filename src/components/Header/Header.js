@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import Context from '../../context'
-import ButtonSwitchLang from '../ButtonSwitchLang/ButtonSwitchLang'
+import ButtonSwitch from '../ButtonSwitch/ButtonSwitch'
 import I18n from '../../I18n/I18n'
 
 export default function Header() {
@@ -10,7 +10,7 @@ export default function Header() {
         <>
             <h1 className="ts__app-title">{I18n.t('mainTitle')}</h1>
             {debug && <i className="fas fa-bug ts__app-debug" data-action='debug'/>}
-            <ButtonSwitchLang/>
+            <ButtonSwitch/>
         </>
     )
 }
