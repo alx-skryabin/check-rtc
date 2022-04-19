@@ -11,10 +11,10 @@ export default function UserInfo() {
     const {language, onLine, userAgent} = navigator
 
     useEffect(() => {
-      detectSpeed()
-      getIP().then(r => {
-        setIp(r.ip)
-      })
+        detectSpeed()
+        getIP().then(r => {
+            setIp(r.ip)
+        })
     }, [])
 
     return (
@@ -44,7 +44,7 @@ export default function UserInfo() {
                 <i className="fas fa-microchip"/>
                 <div className="ts__app-info-title">
                     RTCPeerConnection:
-                    <span>{new RTCPeerConnection(null) ? I18n.t('simple.yes') : 'unknown'}</span>
+                    <span>{detectRTCPeer() ? I18n.t('simple.yes') : 'unknown'}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
@@ -100,6 +100,11 @@ export default function UserInfo() {
     )
 }
 
-
-
-
+function detectRTCPeer() {
+    try {
+        return new RTCPeerConnection(null)
+    } catch (e) {
+        console.log('RTCPeerConnection ', e)
+        return false
+    }
+}
