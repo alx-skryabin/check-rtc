@@ -1,21 +1,21 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import VideoStreams from '../VideoStreams/VideoStreams'
-import UserInfo from '../UserInfo/UserInfo'
-import Context from '../../context'
-import I18n from '../../I18n/I18n'
+// import UserInfo from '../UserInfo/UserInfo'
+import Context from '../../tools/context'
+// import I18n from '../../tools/I18n/I18n'
 
 export default function Result() {
     const state = useContext(Context).getState()
-    const {devices: {audio, video}, isStarted, isCalling} = state
+    const {isStarted, isCalling} = state
 
-    useEffect(() => {
+    /*useEffect(() => {
         const elems = document.querySelectorAll('.tooltipped')
         window.M.Tooltip.init(elems)
-    }, [])
+    }, [])*/
 
     return (
         <div className='ts__app-result'>
-            <div className="ts__app-devices">
+            {/* <div className="ts__app-devices">
                 <div
                     className={defineStatusDevice(video)}
                     data-position="bottom"
@@ -32,16 +32,16 @@ export default function Result() {
                     {audio ? <i className="fas fa-microphone"/> : <i className="fas fa-microphone-slash"/>}
                     <span>{I18n.t('userInfo.microphone.label')}</span>
                 </div>
-            </div>
+            </div>*/}
 
-            <div id="SoundMeter" className='ts__meters' style={{display: isStarted ? 'flex' : 'none'}}>
-                <meter high="0.25" max="1" value="0"/>
-                <div/>
-            </div>
+            {/*<div id="SoundMeter" className='ts__meters' style={{display: isStarted ? 'flex' : 'none'}}>*/}
+            {/*    <meter high="0.25" max="1" value="0"/>*/}
+            {/*    <div/>*/}
+            {/*</div>*/}
 
             <VideoStreams isStarted={isStarted} isCalling={isCalling}/>
 
-            <UserInfo/>
+            {/*<UserInfo/>*/}
         </div>
     )
 }

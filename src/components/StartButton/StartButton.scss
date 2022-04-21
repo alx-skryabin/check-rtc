@@ -1,0 +1,51 @@
+.ts__app-start-button {
+  text-align: center;
+  padding: 20px 0;
+
+  .ts__app-start-button_rect {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .ts__app-start-button_circle {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    line-height: 1.8;
+  }
+}
+
+.animate-gradient {
+  border: none;
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(-90deg, #1125e7, #23bdec);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+
+  &:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, .1);
+  }
+
+  &:disabled {
+    animation: none;
+    opacity: .6;
+    cursor: default;
+  }
+}
+
+@keyframes animate_gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

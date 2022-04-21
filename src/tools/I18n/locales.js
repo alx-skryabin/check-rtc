@@ -2,7 +2,7 @@ export const locales = {
     ru: {
         mainTitle: 'Диагностика видеоконсультации',
         buttons: {
-            start: 'Старт',
+            start: 'Начать диагностику',
             complete: 'Завершить',
             hangup: 'Сбросить',
             call: 'Позвонить',
@@ -56,7 +56,7 @@ export const locales = {
     en: {
         mainTitle: 'Diagnostics of video consultation',
         buttons: {
-            start: 'Start',
+            start: 'Start diagnostics',
             complete: 'Complete',
             hangup: 'Hang up',
             call: 'Call',

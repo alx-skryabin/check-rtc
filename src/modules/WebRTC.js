@@ -13,7 +13,7 @@ export default class WebRTC {
         this.remoteStream = null //media flow
     }
 
-    connectCall(setState) {
+    connectCall() {
         this.pc1 = new RTCPeerConnection(null)
         this.pc2 = new RTCPeerConnection(null)
 
@@ -29,7 +29,7 @@ export default class WebRTC {
         this.pc2.ontrack = e => {
             this.remoteStream = e.streams[0]
             this.$remoteVideo.srcObject = this.remoteStream
-            setState({isCalling: true})
+            // setState({isCalling: true})
         }
 
         // this.pc1.addStream(this.localStream) // not work in safari

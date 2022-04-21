@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {detectBrowser, detectDevice, detectOS, detectSpeed, getIP} from '../Tools/tools'
-import Context from '../../context'
-import I18n from '../../I18n/I18n'
+import {detectBrowser, detectDevice, detectOS, detectSpeed, getIP} from '../../tools/utils'
+import Context from '../../tools/context'
+import I18n from '../../tools/I18n/I18n'
 import './UserInfo.css'
 
 export default function UserInfo() {

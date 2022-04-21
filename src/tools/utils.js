@@ -1,4 +1,9 @@
-import I18n from '../../I18n/I18n'
+import I18n from './I18n/I18n'
+
+function getConnectedDevices() {
+    return navigator.mediaDevices.enumerateDevices()
+        .then(list => parseDevices(list))
+}
 
 function parseDevices(list) {
     const res = {
@@ -95,4 +100,14 @@ function getIP() {
         .then(r => r.json())
 }
 
-export {parseDevices, defEnableDebug, setFavicon, detectBrowser, detectOS, detectSpeed, detectDevice, getIP}
+export {
+    getConnectedDevices,
+    parseDevices,
+    defEnableDebug,
+    setFavicon,
+    detectBrowser,
+    detectOS,
+    detectSpeed,
+    detectDevice,
+    getIP
+}
