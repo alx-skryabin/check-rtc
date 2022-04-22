@@ -1,13 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {detectBrowser, detectDevice, detectOS, detectSpeed, getIP} from '../../tools/utils'
-import Context from '../../tools/context'
 import I18n from '../../tools/I18n/I18n'
 import './UserInfo.css'
 
 export default function UserInfo() {
     const [ip, setIp] = useState('0.0.0.0000')
-    const state = useContext(Context).getState()
-    const {audio, video} = state.devices
     const {language, onLine, userAgent} = navigator
 
     useEffect(() => {
@@ -23,14 +20,14 @@ export default function UserInfo() {
                 <i className="fas fa-video"/>
                 <div className="ts__app-info-title">
                     {I18n.t('userInfo.camera.label')}:
-                    <span>{video || I18n.t('userInfo.camera.value')}</span>
+                    <span>{'название камеры' || I18n.t('userInfo.camera.value')}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">
                 <i className="fas fa-microphone"/>
                 <div className="ts__app-info-title">
                     {I18n.t('userInfo.microphone.label')}:
-                    <span>{audio || I18n.t('userInfo.microphone.value')}</span>
+                    <span>{'название микро' || I18n.t('userInfo.microphone.value')}</span>
                 </div>
             </div>
             <div className="ts__app-info-item">

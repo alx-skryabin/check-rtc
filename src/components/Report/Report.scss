@@ -1,0 +1,28 @@
+.ts__app-report {
+  ul {
+    background: #fff;
+
+    .collection-header {
+      padding: 10px 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .collection-item {
+      .collapsible-header {
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+
+      .collapsible-body {
+        color: #555;
+        background: #eee;
+      }
+    }
+  }
+}

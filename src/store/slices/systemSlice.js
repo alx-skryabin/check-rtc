@@ -11,10 +11,6 @@ export const systemSlice = createSlice({
         lang: I18n.defineLang
     },
     reducers: {
-        switchDebug: (state) => {
-            console.info('debug:')
-            state.debug = !state.debug
-        },
         switchTheme: (state, action) => {
             console.info('change theme')
             state.theme = action.payload.theme
@@ -26,6 +22,6 @@ export const systemSlice = createSlice({
     },
 })
 
-export const {switchDebug, switchTheme, switchLang} = systemSlice.actions
+export const {switchTheme, switchLang} = systemSlice.actions
 
 export default systemSlice.reducer

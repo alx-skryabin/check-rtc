@@ -1,19 +1,19 @@
-.ts__meters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
+.ts__app-meters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.ts__app_theme-dark .ts__meters {
-    color: #eee;
+.ts__app_theme-dark .ts__app-meters {
+  color: #eee;
 }
 
-.ts__app_theme-light .ts__meters {
-    color: #333;
+.ts__app_theme-light .ts__app-meters {
+  color: #333;
 }
 
-.ts__meters meter {
-    width: 250px;
-    margin: 0 10px;
+.ts__app-meters meter {
+  width: 250px;
+  margin: 0 10px;
 }

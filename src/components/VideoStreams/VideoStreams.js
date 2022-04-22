@@ -1,9 +1,12 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import './VideoStreams.css'
 
 export default function VideoStreams() {
+    const {isSuccess} = useSelector((state) => state.diagnostic.result)
+
     return (
-        <>
+        <div className="ts__app-media" hidden={!isSuccess ?? ''}>
             <div className="ts__app-streams">
                 <div className="ts__app-streams-item" hidden>
                     <video
@@ -22,9 +25,9 @@ export default function VideoStreams() {
                 </div>
             </div>
 
-            <div id="SoundMeter" className="ts__meters">
+            <div id="SoundMeter" className="ts__app-meters">
                 <meter high="0.25" max="1" value="0"/>
             </div>
-        </>
+        </div>
     )
 }

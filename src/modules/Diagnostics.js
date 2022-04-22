@@ -38,7 +38,7 @@ export default class Diagnostics {
         console.info('run - start')
         await this.checkPermission()
         await this.checkRTC()
-        // await this.checkSpeed()
+        await this.checkSpeed()
         await this.checkCall()
         console.info('run - finish')
         return this.points
@@ -48,7 +48,7 @@ export default class Diagnostics {
         console.log('checkPermission - start')
         const permission = {
             status: false,
-            message: 'Необходимо дать разрешения на камеру и микрофон'
+            message: ''
         }
 
         return navigator.mediaDevices.getUserMedia(requestedDevices)
@@ -85,13 +85,13 @@ export default class Diagnostics {
         console.log('checkRTC - start')
         const rtc = {
             status: false,
-            message: 'Браузер не поддерживает RTCPeerConnection'
+            message: 'Браузер не поддерживает видеосвязь'
         }
 
         try {
             new RTCPeerConnection(null)
             rtc.status = true
-            rtc.message = 'RTCPeerConnection поддерживается'
+            rtc.message = 'Браузер поддерживает видеосвязь'
         } catch (e) {
             console.log(e, rtc.message)
         }
@@ -128,7 +128,7 @@ export default class Diagnostics {
             message: 'Скорость интернета менее 5 мб/с'
         }
 
-        const speedInternet = 7
+        const speedInternet = 3
 
         if (speedInternet > 5) {
             speed.status = true
