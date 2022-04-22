@@ -1,104 +1,47 @@
 .ts__app {
-    padding: 20px;
-    min-height: 100vh;
+  padding: 20px;
+  min-height: 100vh;
 }
 
 .ts__app_theme-dark {
-    background: #223;
+  background: #223;
 }
 
 .ts__app_theme-light {
-    background: #eee;
+  background: #eee;
 }
 
 .ts__app-debug {
-    background: red;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    left: 20px;
+  background: red;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .ts__app-title {
-    font-size: 2em;
-    text-align: center;
-    margin-top: 0;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 0;
 }
 
 .ts__app_theme-dark .ts__app-title {
-    color: #eee;
+  color: #eee;
 }
 
 .ts__app_theme-light .ts__app-title {
-    color: #333;
-}
-
-.ts__app-loader {
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ts__app_theme-dark .ts__app-loader {
-    color: #eee;
-}
-
-.ts__app_theme-light .ts__app-loader {
-    color: #333;
-}
-
-.ts__app-controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.ts__app-controls button {
-    margin: 0 5px;
-}
-
-.ts__app-controls-not-device {
-    color: gold;
-    text-align: center;
-}
-
-.ts__app-devices {
-    display: flex;
-    justify-content: center;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.ts__app-devices-item {
-    padding: 5px 15px;
-    font-size: 1.2rem;
-    cursor: default;
-}
-
-.ts__app-devices__error {
-    color: tomato;
-    opacity: .8;
-}
-
-.ts__app-devices__success {
-    color: limegreen;
-    opacity: .8;
-}
-
-.ts__app-devices-item i {
-    margin-right: 5px;
+  color: #333;
 }
 
 @media (max-width: 500px) {
-    .ts__app {
-        padding: 20px 10px;
-    }
+  .ts__app {
+    padding: 20px 10px;
+  }
 
-    .ts__app-debug {
-        top: 10px;
-        left: 10px;
-    }
+  .ts__app-debug {
+    top: 10px;
+    left: 10px;
+  }
 }

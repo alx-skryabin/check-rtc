@@ -65,9 +65,15 @@ export default class Diagnostics {
                 permission.message = 'Камера и микрофон подключены'
                 permission.devices = devices
             })
-            .catch(e => {
+            .catch(async e => {
                 console.log(e)
-                throw {point: 'permission', permission}
+                const {audio, video} = await getConnectedDevices()
+
+                permission.message = (audio && video)
+                    ? 'Необходимо дать разрешение на использование устройств'
+                    : 'Устройства не подключены'
+
+                throw {permission}
             })
             .finally(() => {
                 this.points.permission = permission
@@ -102,10 +108,12 @@ export default class Diagnostics {
         }
 
         try {
-            this.webRTC.$localVideo.srcObject = this.webRTC.localStream
             this.webRTC.connectCall()
-            call.status = true
-            call.message = 'Звонок состоялся'
+                .then(() => {
+                    this.soundLine.runSoundLine(this.webRTC.localStream)
+                    call.status = true
+                    call.message = 'Звонок состоялся'
+                })
         } catch (e) {
             console.log(e, call.message)
         }

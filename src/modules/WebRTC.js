@@ -13,7 +13,9 @@ export default class WebRTC {
         this.remoteStream = null //media flow
     }
 
-    connectCall() {
+    async connectCall() {
+        this.$localVideo.srcObject = this.localStream
+
         this.pc1 = new RTCPeerConnection(null)
         this.pc2 = new RTCPeerConnection(null)
 
@@ -25,19 +27,19 @@ export default class WebRTC {
             this.onIceCandidate(this.pc2, e)
         }
 
-        // onaddstream event not work on safari
-        this.pc2.ontrack = e => {
-            this.remoteStream = e.streams[0]
-            this.$remoteVideo.srcObject = this.remoteStream
-            // setState({isCalling: true})
-        }
-
         // this.pc1.addStream(this.localStream) // not work in safari
         this.localStream.getTracks()
             .forEach(track => this.pc1.addTrack(track, this.localStream))
 
         this.pc1.createOffer(offerOptions)
             .then(this.onCreateOfferSuccess.bind(this))
+
+        // onaddstream event not work on safari
+        return this.pc2.ontrack = e => {
+            this.remoteStream = e.streams[0]
+            this.$remoteVideo.srcObject = this.remoteStream
+            // setState({isCalling: true})
+        }
     }
 
     disconnectCall() {

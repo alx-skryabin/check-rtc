@@ -1,5 +1,4 @@
-import React, {useContext} from 'react'
-import Context from '../../../tools/context'
+import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {switchLang, switchTheme} from '../../../store/slices/systemSlice'
 import I18n from '../../../tools/I18n/I18n'
@@ -7,13 +6,14 @@ import Theme from '../../../tools/theme'
 import './ButtonsSystem.css'
 
 export default function ButtonsSystem() {
-    const state = useContext(Context).getState()
-    const {lang, theme, debug} = useSelector((state) => state.system)
+    const store = useSelector((state) => state)
+
+    const {lang, theme, debug} = store.system
     const dispatch = useDispatch()
 
     const handlerDebug = () => {
-        console.info('debug:')
-        console.dir(state)
+        console.info('store:')
+        console.dir(store)
     }
 
     const handleSwitchLang = (e) => {

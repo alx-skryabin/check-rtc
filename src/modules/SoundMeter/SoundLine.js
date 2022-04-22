@@ -5,6 +5,7 @@ export default class SoundLine {
     constructor() {
         this.intervalId = null
         this.soundMeter = null
+        this.instantMeter = document.querySelector('#SoundMeter meter')
     }
 
     runSoundLine(stream) {
@@ -25,20 +26,13 @@ export default class SoundLine {
     }
 
     updateValue() {
-        const val = this.soundMeter.instant.toFixed(2)
-        this.instantMeter.value = val
-        this.instantValueDisplay.innerText = val
-    }
-
-    initElem() {
-        this.instantMeter = document.querySelector('#SoundMeter meter')
-        this.instantValueDisplay = document.querySelector('#SoundMeter div')
+        this.instantMeter.value = this.soundMeter.instant.toFixed(2)
     }
 
     resetSoundLine() {
         this.soundMeter.stop()
         clearInterval(this.intervalId)
-        this.instantMeter.value = this.instantValueDisplay.innerText = ''
+        this.instantMeter.value = ''
     }
 
 }

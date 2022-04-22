@@ -1,47 +1,50 @@
 import React, {useState} from 'react'
-import I18n from '../../tools/I18n/I18n'
+import {useDispatch, useSelector} from 'react-redux'
 import Diagnostics from '../../modules/Diagnostics'
+import I18n from '../../tools/I18n/I18n'
+import {updateResult} from '../../store/slices/diagnosticSlice'
 import './StartButton.scss'
 
-
 export default function StartButton() {
+    useSelector((state) => state)
     const [inProgress, setInProgress] = useState(false)
-    const [errors, setErrors] = useState(false)
+    const dispatch = useDispatch()
 
     const handlerStart = () => {
         setInProgress(true)
         new Diagnostics().run()
             .then(onSuccess)
             .catch(onError)
-            .finally(() => setInProgress(false))
+            .finally(
+                () => setInProgress(false)
+            )
     }
 
-    function onSuccess(e) {
-        console.log(123, e)
+    function onSuccess(data) {
+        dispatch(updateResult({
+            isSuccess: true,
+            data
+        }))
     }
 
-    function onError(e) {
-        setErrors(true)
-        console.log(321, e)
+    function onError(data) {
+        dispatch(updateResult({
+            isSuccess: false,
+            data
+        }))
     }
-
-    const typeButtonClass = errors
-        ? 'ts__app-start-button_rect'
-        : 'ts__app-start-button_circle'
-
-    const nameButton = errors ? 'Повторить' : I18n.t('buttons.start')
 
     return (
         <div className="ts__app-start-button">
             <button
-                className={`animate-gradient waves-effect waves-light ${typeButtonClass}`}
+                className={`animate-gradient waves-effect waves-light ts__app-start-button_circle`}
                 disabled={inProgress}
                 onClick={handlerStart}
             >
                 {
                     inProgress
                         ? <i className="fas fa-spinner fa-spin fa-3x"/>
-                        : nameButton
+                        : I18n.t('buttons.start')
                 }
             </button>
         </div>

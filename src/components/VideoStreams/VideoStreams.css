@@ -3,28 +3,10 @@
     justify-content: center;
 }
 
-.ts__app-streams-hidden {
-    /*display: none;*/
-    /*overflow: hidden;*/
-}
-
 .ts__app-streams-item {
-    max-width: 300px;
+    max-width: 250px;
     min-width: 200px;
-    margin: 0 10px 30px;
-}
-
-.ts__app-streams-item div {
-    text-align: center;
-    margin-bottom: 4px;
-}
-
-.ts__app_theme-dark .ts__app-streams-item {
-    color: #eee;
-}
-
-.ts__app_theme-light .ts__app-streams-item {
-    color: #333;
+    margin: 0 10px 15px;
 }
 
 .ts__app-streams video {
@@ -43,6 +25,6 @@
 
     .ts__app-streams-item {
         max-width: 100%;
-        margin: 0 0 30px;
+        margin: 0 0 15px;
     }
 }
