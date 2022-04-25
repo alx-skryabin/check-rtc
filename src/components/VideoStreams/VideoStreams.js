@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import './VideoStreams.css'
+import './VideoStreams.scss'
 
 export default function VideoStreams() {
   const {isSuccess} = useSelector((state) => state.diagnostic.result)

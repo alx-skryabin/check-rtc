@@ -1,5 +1,5 @@
 import {SoundMeter} from './soundmeter'
-import './SoundLine.css'
+import './SoundLine.scss'
 
 export default class SoundLine {
   constructor() {

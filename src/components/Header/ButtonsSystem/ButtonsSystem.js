@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {switchLang, switchTheme} from '../../../store/slices/systemSlice'
 import I18n from '../../../tools/I18n/I18n'
 import Theme from '../../../tools/theme'
-import './ButtonsSystem.css'
+import './ButtonsSystem.scss'
 
 export default function ButtonsSystem() {
   const store = useSelector((state) => state)

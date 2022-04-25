@@ -1,6 +1,10 @@
 .ts__app-report {
   ul {
     background: #fff;
+    margin: 10px auto;
+    max-width: 640px;
+    border-radius: 5px;
+    overflow: hidden;
 
     .collection-header {
       padding: 10px 15px;
