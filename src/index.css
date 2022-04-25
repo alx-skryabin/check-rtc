@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 * {
-    scrollbar-color: #ccc #fff;
-    scrollbar-width: thin;
+  scrollbar-color: #ccc #fff;
+  scrollbar-width: thin;
 }
 
 body {
-    font-family: 'Roboto Condensed', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
 }

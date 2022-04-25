@@ -1,65 +1,65 @@
 .ts__app-info {
-    border-radius: 5px;
-    overflow: hidden;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .ts__app_theme-dark .ts__app-info {
-    background: #3a3a4e;
+  background: #3a3a4e;
 }
 
 .ts__app_theme-light .ts__app-info {
-    background: #ccc;
+  background: #ccc;
 }
 
 .ts__app-info-item {
-    display: flex;
-    align-items: center;
-    font-size: 1.2em;
-    user-select: none;
-    padding: 5px 10px;
-    transition: .2s;
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  user-select: none;
+  padding: 5px 10px;
+  transition: .2s;
 }
 
 .ts__app_theme-dark .ts__app-info-item {
-    color: #eee;
+  color: #eee;
 }
 
 .ts__app_theme-light .ts__app-info-item {
-    color: #333;
+  color: #333;
 }
 
 .ts__app_theme-dark .ts__app-info-item:nth-child(odd) {
-    background: #434357;
+  background: #434357;
 }
 
 .ts__app_theme-light .ts__app-info-item:nth-child(odd) {
-    background: #ddd;
+  background: #ddd;
 }
 
 .ts__app-info-item:hover {
-    transition: .2s;
+  transition: .2s;
 }
 
 .ts__app_theme-dark .ts__app-info-item:hover {
-    background: #313143;
+  background: #313143;
 }
 
 .ts__app_theme-light .ts__app-info-item:hover {
-    background: #adadad;
+  background: #adadad;
 }
 
 .ts__app-info-item i {
-    width: 25px;
-    margin-right: 10px;
-    display: inline-block;
-    text-align: center;
+  width: 25px;
+  margin-right: 10px;
+  display: inline-block;
+  text-align: center;
 }
 
 .ts__app-info-title {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .ts__app-info-title span {
-    font-weight: 600;
-    margin-left: 10px;
+  font-weight: 600;
+  margin-left: 10px;
 }

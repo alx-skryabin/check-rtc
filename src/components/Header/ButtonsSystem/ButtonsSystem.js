@@ -6,33 +6,33 @@ import Theme from '../../../tools/theme'
 import './ButtonsSystem.css'
 
 export default function ButtonsSystem() {
-    const store = useSelector((state) => state)
+  const store = useSelector((state) => state)
 
-    const {lang, theme, debug} = store.system
-    const dispatch = useDispatch()
+  const {lang, theme, debug} = store.system
+  const dispatch = useDispatch()
 
-    const handlerDebug = () => {
-        console.info('store:')
-        console.dir(store)
-    }
+  const handlerDebug = () => {
+    console.info('store:')
+    console.dir(store)
+  }
 
-    const handleSwitchLang = (e) => {
-        const lang = I18n.anotherLang(e.target.dataset.lang)
-        dispatch(switchLang({lang}))
-    }
+  const handleSwitchLang = (e) => {
+    const lang = I18n.anotherLang(e.target.dataset.lang)
+    dispatch(switchLang({lang}))
+  }
 
-    const handleSwitchTheme = (e) => {
-        const theme = Theme.changeTheme(e.target.dataset.theme)
-        dispatch(switchTheme({theme}))
-    }
+  const handleSwitchTheme = (e) => {
+    const theme = Theme.changeTheme(e.target.dataset.theme)
+    dispatch(switchTheme({theme}))
+  }
 
-    return (
-        <>
-            {debug &&
-            <i className="fas fa-bug ts__app-debug"
-               onClick={handlerDebug}
-            />}
-            {/*<div
+  return (
+    <>
+      {debug &&
+      <i className="fas fa-bug ts__app-debug"
+         onClick={handlerDebug}
+      />}
+      {/*<div
                 className="ts__app-lang"
                 data-lang={lang}
                 onClick={handleSwitchLang}
@@ -44,8 +44,8 @@ export default function ButtonsSystem() {
                 onClick={handleSwitchTheme}
                 data-theme={theme}
             />*/}
-        </>
-    )
+    </>
+  )
 }
 
 
