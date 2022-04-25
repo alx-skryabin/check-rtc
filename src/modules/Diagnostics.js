@@ -18,11 +18,15 @@ const checkPointsDefault = {
     status: false,
     message: 'Звонок не состоялся'
   },
-  speed: {
+  /*speed: {
     status: false,
     message: 'Скорость интернета менее 5 мб/с'
-  }
+  }*/
 }
+
+/*Object.entries(checkPointsDefault).map(item => {
+  console.log(item)
+})*/
 
 const requestedDevices = {
   audio: true,
@@ -40,7 +44,7 @@ export default class Diagnostics {
     console.info('run - start')
     await this.checkPermission()
     await this.checkRTC()
-    await this.checkSpeed()
+    // await this.checkSpeed()
     await this.checkCall()
     console.info('run - finish')
     return this.points
@@ -86,16 +90,19 @@ export default class Diagnostics {
     logger('checkRTC - start')
     const rtc = {...checkPointsDefault.rtc}
 
-    try {
-      new RTCPeerConnection(null)
-      rtc.status = true
-      rtc.message = 'Браузер поддерживает видеосвязь'
-    } catch (e) {
-      console.log(e, rtc.message)
-    }
-
-    this.points.rtc = rtc
-    logger('checkRTC - finish')
+    return Promise.resolve('success')
+      .then(() => {
+        new RTCPeerConnection(null)
+        rtc.status = true
+        rtc.message = 'Браузер поддерживает видеосвязь'
+      })
+      .catch(() => {
+        throw {rtc}
+      })
+      .finally(() => {
+        this.points.rtc = rtc
+        logger('checkRTC - finish')
+      })
   }
 
   checkCall() {

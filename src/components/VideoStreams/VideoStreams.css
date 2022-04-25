@@ -24,7 +24,7 @@
   }
 
   .ts__app-streams-item {
-    max-width: 100%;
+    max-width: 180px;
     margin: 0 0 15px;
   }
 }
