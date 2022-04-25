@@ -5,15 +5,15 @@ import {useSelector} from 'react-redux'
 // import UserInfo from '../UserInfo/UserInfo'
 
 export default function Result() {
-    const {data} = useSelector((state) => state.diagnostic.result)
+  const {data} = useSelector((state) => state.diagnostic.result)
 
-    return (
-        <div className="ts__app-result">
-            <VideoStreams/>
+  return (
+    <div className="ts__app-result">
+      <VideoStreams/>
 
-            {data && <Report/>}
+      {data && <Report/>}
 
-            {/*<UserInfo/>*/}
-        </div>
-    )
+      {/*<UserInfo/>*/}
+    </div>
+  )
 }

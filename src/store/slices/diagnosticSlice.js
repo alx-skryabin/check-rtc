@@ -10,7 +10,6 @@ export const diagnosticSlice = createSlice({
     },
     reducers: {
         updateResult: (state, action) => {
-            console.log(action.payload)
             state.result = action.payload
         }
     },

@@ -3,6 +3,8 @@ const offerOptions = {
     offerToReceiveVideo: 1
 }
 
+const CONSOLE_LOG = false
+
 export default class WebRTC {
     constructor() {
         this.$localVideo = document.getElementById('localVideo')
@@ -38,7 +40,6 @@ export default class WebRTC {
         return this.pc2.ontrack = e => {
             this.remoteStream = e.streams[0]
             this.$remoteVideo.srcObject = this.remoteStream
-            // setState({isCalling: true})
         }
     }
 
@@ -60,10 +61,10 @@ export default class WebRTC {
     onIceCandidate(pc, event) {
         this.getOtherPc(pc).addIceCandidate(event.candidate)
             .then(() => {
-                    console.log(3, 'AddIceCandidate success ' + this.getNamePc(pc))
+                    logger(3, 'AddIceCandidate success ' + this.getNamePc(pc))
                 },
                 err => {
-                    console.log(3, 'Failed to add ICE Candidate ' + this.getNamePc(pc), err)
+                    logger(3, 'Failed to add ICE Candidate ' + this.getNamePc(pc), err)
                 }
             )
     }
@@ -73,13 +74,13 @@ export default class WebRTC {
         // console.log('desc', desc)
         this.pc1.setLocalDescription(desc)
             .then(
-                () => console.log(1, 'The offer was created successfully - pc1'),
-                () => console.log('Ошибка создания офера - pc1')
+                () => logger(1, 'The offer was created successfully - pc1'),
+                () => logger('Ошибка создания офера - pc1')
             )
 
         this.pc2.setRemoteDescription(desc).then(
-            () => console.log(1, 'The offer was created successfully - pc2'),
-            () => console.log('Ошибка создания офера - pc2')
+            () => logger(1, 'The offer was created successfully - pc2'),
+            () => logger('Ошибка создания офера - pc2')
         )
 
         this.pc2.createAnswer().then(
@@ -90,13 +91,13 @@ export default class WebRTC {
     // get answer by offer success
     onCreateAnswerSuccess(desc) {
         this.pc1.setRemoteDescription(desc).then(
-            () => console.log(2, 'The response was received successfully - pc1'),
-            () => console.log('Error receiving the response - pc1')
+            () => logger(2, 'The response was received successfully - pc1'),
+            () => logger('Error receiving the response - pc1')
         )
 
         this.pc2.setLocalDescription(desc).then(
-            () => console.log(2, 'The response was received successfully - pc2'),
-            () => console.log('Error receiving the response - pc2')
+            () => logger(2, 'The response was received successfully - pc2'),
+            () => logger('Error receiving the response - pc2')
         )
     }
 
@@ -106,5 +107,12 @@ export default class WebRTC {
 
     getOtherPc(pc) {
         return (pc === this.pc1) ? this.pc2 : this.pc1
+    }
+}
+
+function logger(val1, val2 = '') {
+    if (CONSOLE_LOG) {
+        if (val2) console.log(val1, val2)
+        else console.log(val1)
     }
 }

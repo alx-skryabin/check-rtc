@@ -32,7 +32,7 @@ export default function ButtonsSystem() {
             <i className="fas fa-bug ts__app-debug"
                onClick={handlerDebug}
             />}
-            <div
+            {/*<div
                 className="ts__app-lang"
                 data-lang={lang}
                 onClick={handleSwitchLang}
@@ -43,7 +43,7 @@ export default function ButtonsSystem() {
                 className="ts__app-theme fas fa-adjust"
                 onClick={handleSwitchTheme}
                 data-theme={theme}
-            />
+            />*/}
         </>
     )
 }
