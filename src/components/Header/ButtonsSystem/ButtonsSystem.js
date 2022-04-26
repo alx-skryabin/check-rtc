@@ -28,13 +28,13 @@ export default function ButtonsSystem() {
       <i className="fas fa-bug ts__app-debug"
          onClick={handlerDebug}
       />}
-      <div
+      {/*<div
         className="ts__app-lang"
         data-lang={context.locale}
         onClick={context.selectLanguage}
       >
         {context.locale}
-      </div>
+      </div>*/}
       {/*<i
         className="ts__app-theme fas fa-adjust"
         onClick={handleSwitchTheme}
