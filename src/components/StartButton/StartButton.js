@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {FormattedMessage} from 'react-intl'
 import Diagnostics from '../../modules/Diagnostics'
-import I18n from '../../tools/I18n/I18n'
 import {updateResult} from '../../store/slices/diagnosticSlice'
 import './StartButton.scss'
 
@@ -44,7 +44,10 @@ export default function StartButton() {
         {
           inProgress
             ? <i className="fas fa-spinner fa-spin fa-3x"/>
-            : I18n.t('buttons.start')
+            : <FormattedMessage
+              id="StartButton.button.start"
+              defaultMessage="Start diagnostics"
+            />
         }
       </button>
     </div>

@@ -76,12 +76,12 @@ export default class WebRTC {
     this.pc1.setLocalDescription(desc)
       .then(
         () => logger(1, 'The offer was created successfully - pc1'),
-        () => logger('Ошибка создания офера - pc1')
+        () => logger('Offer creation error - pc1')
       )
 
     this.pc2.setRemoteDescription(desc).then(
       () => logger(1, 'The offer was created successfully - pc2'),
-      () => logger('Ошибка создания офера - pc2')
+      () => logger('Offer creation error - pc2')
     )
 
     this.pc2.createAnswer().then(

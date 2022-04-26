@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import {Answers} from './Answers'
+import {FormattedMessage} from 'react-intl'
 import './Report.scss'
 
 export default function Report() {
@@ -38,7 +39,10 @@ export default function Report() {
       <ul className="collapsible">
         <li className="collection-header">
           <h5 className={isSuccess ? 'teal-text text-accent-4' : 'red-text text-lighten-1'}>
-            Результат диагностики
+            <FormattedMessage
+              id="Report.title"
+              defaultMessage="Diagnostic result"
+            />
           </h5>
         </li>
 
