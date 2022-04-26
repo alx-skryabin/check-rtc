@@ -1,4 +1,5 @@
 import React from 'react'
+import gifError from '../../assets/gif-error.gif'
 
 const Permission = ({data}) => {
   const {status, devices} = data
@@ -39,6 +40,7 @@ const Permission = ({data}) => {
       <div>
         <i className="fas fa-video"/> {devices.video}
       </div>
+      <img src={gifError} alt="hui"/>
       Всё в порядке! Если вы по прежнему не видите изображение с вашей веб-камеры, закройте запущенные в вашей
       операционной системе приложения для видеоконференций и перезагрузите страницу. В случае повторной ошибки,
       проверьте правильность подключения и работоспособность вашего устройства.

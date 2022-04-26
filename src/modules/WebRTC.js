@@ -16,7 +16,8 @@ export default class WebRTC {
   }
 
   async connectCall() {
-    this.$localVideo.srcObject = this.localStream
+    // For output stream local video
+    // this.$localVideo.srcObject = this.localStream
 
     this.pc1 = new RTCPeerConnection(null)
     this.pc2 = new RTCPeerConnection(null)

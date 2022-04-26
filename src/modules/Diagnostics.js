@@ -141,3 +141,13 @@ function logger(val1, val2 = '') {
     else console.log(val1)
   }
 }
+
+// hangup() {
+//      this.webRTC.disconnectCall()
+// }
+
+// stop() {
+//     this.webRTC.disconnectCall()
+//     this.webRTC.disableStreams()
+//     this.soundLine.resetSoundLine()
+// }
