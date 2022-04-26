@@ -1,9 +1,7 @@
 import React from 'react'
 import ButtonsSystem from './ButtonsSystem/ButtonsSystem'
 import {FormattedMessage} from 'react-intl'
-import {Context} from "../../modules/intl/Intl";
 
-console.log(Context);
 export default function Header() {
   return (
     <div className="ts__app-header">
