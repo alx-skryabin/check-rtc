@@ -15,5 +15,10 @@
 
 .ts__app-meters meter {
   width: 250px;
-  margin: 0 10px;
+}
+
+@media (max-width: 500px) {
+  .ts__app-meters meter {
+    max-width: 200px;
+  }
 }

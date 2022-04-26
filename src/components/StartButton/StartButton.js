@@ -6,7 +6,7 @@ import {updateResult} from '../../store/slices/diagnosticSlice'
 import './StartButton.scss'
 
 export default function StartButton() {
-  useSelector((state) => state)
+  const {data} = useSelector((state) => state.diagnostic.result)
   const [inProgress, setInProgress] = useState(false)
   const dispatch = useDispatch()
 
@@ -35,7 +35,7 @@ export default function StartButton() {
   }
 
   return (
-    <div className="ts__app-start-button">
+    <div className={`ts__app-start-button ${(inProgress || data) ? '' : 'centered'}`}>
       <button
         className={`animate-gradient waves-effect waves-light ts__app-start-button_circle`}
         disabled={inProgress}

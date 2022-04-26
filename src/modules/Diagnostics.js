@@ -24,10 +24,6 @@ const checkPointsDefault = {
   }*/
 }
 
-/*Object.entries(checkPointsDefault).map(item => {
-  console.log(item)
-})*/
-
 const requestedDevices = {
   audio: true,
   video: true
