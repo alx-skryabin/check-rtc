@@ -20,7 +20,7 @@ const checkPointsDefault = {
   },
   speed: {
     status: false, // unused
-    message: 'Скорость интернет соединения'
+    message: 'Скорость соединения с сервером'
   }
 }
 

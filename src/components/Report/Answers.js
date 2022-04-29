@@ -124,15 +124,15 @@ const Speed = ({data}) => {
       iconClass = 'fas fa-exclamation-circle'
       colorClass = 'red-text text-lighten-1'
       MoreText = (props) => (
-        <div>Мы зафиксировали медленную скорость передачи данных - <mark>{props.speed}</mark> Мб/c. Предлагаем изменить
-          ваше интернет подключение, на подключения со скоростью от 10 мбит/с (так же подойдет смена сетей 4g/5g, или
+        <div>Мы зафиксировали медленную скорость передачи данных - <mark>{props.speed}</mark> Мбит/c. Предлагаем изменить
+          ваше интернет подключение, на подключения со скоростью от {minSpeed} Мбит/с (так же подойдет смена сетей 4g/5g, или
           беспроводной тип подключения wifi
         </div>)
       break
     case (speed >= minSpeed) ? speed : false:
       iconClass = 'far fa-check-square'
       colorClass = 'teal-text text-accent-4'
-      MoreText = (props) => (<div>Скорость интернет соединения оптимальная - <mark>{props.speed}</mark> Мб/c</div>)
+      MoreText = (props) => (<div>Скорость интернет соединения оптимальная - <mark>{props.speed}</mark> Мбит/c</div>)
       break
   }
 
