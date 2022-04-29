@@ -63,10 +63,10 @@ function detectOS() {
   return OSName
 }
 
-function detectSpeed() {
-  const imageSrc = "https://f.vividscreen.info/soft/4ede9b3f82605d5387667910528f236b/Nature-Reflection-2880x1920.jpg?n=" + Math.random()
-  const downloadSize = 1971322 // bytes
+function detectSpeed(setSpeed) {
   const startTime = (new Date()).getTime()
+  const imageSrc = 'https://dashboard.callshark.ru/resources/client/img/31120037-5mb.jpg?hash=' + startTime
+  const downloadSize = 5000000 // size in bytes
 
   const download = new Image()
   download.src = imageSrc
@@ -76,8 +76,8 @@ function detectSpeed() {
     const duration = Math.round((endTime - startTime) / 1000)
     const speedBps = Math.round((downloadSize * 8) / duration)
     const speedMbps = (speedBps / 1024 / 1024).toFixed(2)
-    document.querySelector('#speedEnthernet')
-      .innerHTML = `${speedMbps} userInfo.speed.si`
+
+    setSpeed(speedMbps)
   }
 }
 

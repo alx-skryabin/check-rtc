@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {useSelector} from 'react-redux'
-import {Answers} from './Answers'
+import {PointTemplates} from './Answers'
 import {FormattedMessage} from 'react-intl'
 import './Report.scss'
 
@@ -15,23 +15,7 @@ export default function Report() {
   const collections = Object
     .entries(data)
     .map((item, index) => {
-      const [point, {status, message}] = item
-      const Answer = Answers[point]
-
-      const colorClass = status ? 'teal-text text-accent-4' : 'red-text text-lighten-1'
-      const iconClass = status ? 'far fa-check-square' : 'fas fa-exclamation-circle'
-
-      return (
-        <li className={`collection-item ${index === 0 ? 'active' : ''}`} key={index}>
-          <div className="collapsible-header">
-            <span>{message}</span>
-            <i className={`${iconClass} ${colorClass}`}/>
-          </div>
-          <div className="collapsible-body">
-            <Answer data={item[1]}/>
-          </div>
-        </li>
-      )
+      return <PointTemplates item={item} index={index} key={index}/>
     })
 
   return (

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import noPermission from '../../assets/no-permission.gif'
+import {detectBrowser, detectSpeed} from '../../tools/utils'
 
 const Permission = ({data}) => {
   const {status, devices} = data
@@ -16,7 +17,7 @@ const Permission = ({data}) => {
             разрешений.
           </p>
           <div>
-            <img src={noPermission} alt="no permission gif"/>
+            <img src={noPermission} alt="no permission gif" width="100%"/>
           </div>
           <p>
             Если ошибка осталась, проверьте вкладки, открытые в вашем браузере. Возможно вы используете несколько
@@ -51,10 +52,12 @@ const Permission = ({data}) => {
   return (
     <div>
       <div>
-        <i className="fas fa-microphone-alt"/> {devices.audio}
+        <i className="fas fa-microphone-alt"/>
+        <mark>{devices.audio}</mark>
       </div>
       <div>
-        <i className="fas fa-video"/> {devices.video}
+        <i className="fas fa-video"/>
+        <mark>{devices.video}</mark>
       </div>
       <p>
         Всё в порядке! Если вы по прежнему не видите изображение с вашей веб-камеры, закройте запущенные в вашей
@@ -95,32 +98,84 @@ const Rtc = ({data}) => {
 
   return (
     <div>
-      Ваш браузер поддерживает технологию передачи потоковых данных WebRTC
-      {/*используемый браузер: тут указывать название и версию, без полного юзер агента*/}
+      Ваш браузер <mark>{detectBrowser()}</mark> поддерживает технологию передачи потоковых данных WebRTC
     </div>
   )
 }
 
 const Speed = ({data}) => {
-  if (!data.status) {
-    return (
-      <div>
-        Мы зафиксировали медленную скорость передачи данных. Предлагаем изменить ваше интернет подключение, на
-        подключения со скоростью от 10 мбит/с (так же подойдет смена сетей 4g/5g, или беспроводной тип подключения wifi)
-      </div>
-    )
+  const [speed, setSpeed] = useState(0)
+  const minSpeed = 10
+
+  useEffect(() => {
+    detectSpeed(setSpeed)
+  })
+
+  let iconClass = ''
+  let colorClass = ''
+  let MoreText
+
+  switch (speed) {
+    case 0:
+      iconClass = 'fas fa-spinner fa-spin'
+      MoreText = () => `Вычисляется...`
+      break
+    case (speed < minSpeed) ? speed : false:
+      iconClass = 'fas fa-exclamation-circle'
+      colorClass = 'red-text text-lighten-1'
+      MoreText = (props) => (
+        <div>Мы зафиксировали медленную скорость передачи данных - <mark>{props.speed}</mark> Мб/c. Предлагаем изменить
+          ваше интернет подключение, на подключения со скоростью от 10 мбит/с (так же подойдет смена сетей 4g/5g, или
+          беспроводной тип подключения wifi
+        </div>)
+      break
+    case (speed >= minSpeed) ? speed : false:
+      iconClass = 'far fa-check-square'
+      colorClass = 'teal-text text-accent-4'
+      MoreText = (props) => (<div>Скорость интернет соединения оптимальная - <mark>{props.speed}</mark> Мб/c</div>)
+      break
   }
 
   return (
-    <div>
-      Скорость интернет соединения оптимальная
-    </div>
+    <li className="collection-item">
+      <div className="collapsible-header">
+        <span>{data.message}</span>
+        <i className={`${iconClass} ${colorClass}`}/>
+      </div>
+      <div className="collapsible-body">
+        <MoreText speed={speed}/>
+      </div>
+    </li>
   )
 }
 
-export const Answers = {
+const Answers = {
   permission: Permission,
   call: Call,
   rtc: Rtc,
   speed: Speed
+}
+
+export const PointTemplates = ({item, index}) => {
+  const [point, {status, message}] = item
+  const Answer = Answers[point]
+
+  const colorClass = status ? 'teal-text text-accent-4' : 'red-text text-lighten-1'
+  const iconClass = status ? 'far fa-check-square' : 'fas fa-exclamation-circle'
+
+  if (point === 'speed') {
+    return <Answer data={item[1]}/>
+  }
+
+  return (
+    <li className={`collection-item ${index === 0 ? 'active' : ''}`} key={index}>
+      <div className="collapsible-header">
+        <span>{message}</span>
+        <i className={`${iconClass} ${colorClass}`}/>
+      </div>
+      <div className="collapsible-body">
+        <Answer data={item[1]}/>
+      </div>
+    </li>
+  )
 }

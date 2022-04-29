@@ -18,10 +18,10 @@ const checkPointsDefault = {
     status: false,
     message: 'Звонок не состоялся'
   },
-  /*speed: {
-    status: false,
-    message: 'Скорость интернета менее 5 мб/с'
-  }*/
+  speed: {
+    status: false, // unused
+    message: 'Скорость интернет соединения'
+  }
 }
 
 const requestedDevices = {
@@ -40,7 +40,7 @@ export default class Diagnostics {
     console.info('run - start')
     await this.checkPermission()
     await this.checkRTC()
-    // await this.checkSpeed()
+    await this.checkSpeed()
     await this.checkCall()
     console.info('run - finish')
     return this.points
@@ -121,16 +121,7 @@ export default class Diagnostics {
 
   checkSpeed() {
     logger('checkSpeed - start')
-    const speed = {...checkPointsDefault.speed}
-
-    const speedInternet = 3
-
-    if (speedInternet > 5) {
-      speed.status = true
-      speed.message = `Скорость интернета ${speedInternet}`
-    }
-
-    this.points.speed = speed
+    this.points.speed = {...checkPointsDefault.speed}
     logger('checkSpeed - finish')
   }
 }
