@@ -1,6 +1,9 @@
 function getConnectedDevices() {
   return navigator.mediaDevices.enumerateDevices()
-    .then(list => parseDevices(list))
+    .then(parseDevices)
+    .catch(error => {
+      console.error('enumerateDevices', error)
+    })
 }
 
 function parseDevices(list) {
@@ -15,7 +18,9 @@ function parseDevices(list) {
     }
 
     if (kind === 'videoinput') {
-      res.video = label || true
+      if (!label.includes('OBS')) {
+        res.video = label || true
+      }
     }
   })
 
