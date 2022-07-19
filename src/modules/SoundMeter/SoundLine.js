@@ -34,5 +34,4 @@ export default class SoundLine {
     clearInterval(this.intervalId)
     this.instantMeter.value = ''
   }
-
 }

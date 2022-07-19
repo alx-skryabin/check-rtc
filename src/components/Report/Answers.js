@@ -104,35 +104,44 @@ const Rtc = ({data}) => {
 }
 
 const Speed = ({data}) => {
-  const [speed, setSpeed] = useState(0)
   const minSpeed = 10
+  const countCheck = 5
+
+  const [dataSpeed, setDataSpeed] = useState({
+    speed: 0,
+    count: 0
+  })
 
   useEffect(() => {
-    detectSpeed(setSpeed)
+    if (dataSpeed.count < countCheck) {
+      detectSpeed(dataSpeed.count, setDataSpeed)
+    }
   })
 
   let iconClass = ''
   let colorClass = ''
   let MoreText
 
-  switch (speed) {
+  switch (dataSpeed.speed) {
     case 0:
       iconClass = 'fas fa-spinner fa-spin'
       MoreText = () => `Вычисляется...`
       break
-    case (speed < minSpeed) ? speed : false:
+    case (dataSpeed.speed < minSpeed) ? dataSpeed.speed : false:
       iconClass = 'fas fa-exclamation-circle'
       colorClass = 'red-text text-lighten-1'
-      MoreText = (props) => (
-        <div>Мы зафиксировали медленную скорость передачи данных - <mark>{props.speed}</mark> Мбит/c. Предлагаем изменить
-          ваше интернет подключение, на подключения со скоростью от {minSpeed} Мбит/с (так же подойдет смена сетей 4g/5g, или
+      MoreText = () => (
+        <div>Мы зафиксировали медленную скорость передачи данных - <mark>{dataSpeed.speed}</mark> Мбит/c. Предлагаем
+          изменить
+          ваше интернет подключение, на подключения со скоростью от {minSpeed} Мбит/с (так же подойдет смена сетей
+          4g/5g, или
           беспроводной тип подключения wifi
         </div>)
       break
-    case (speed >= minSpeed) ? speed : false:
+    case (dataSpeed.speed >= minSpeed) ? dataSpeed.speed : false:
       iconClass = 'far fa-check-square'
       colorClass = 'teal-text text-accent-4'
-      MoreText = (props) => (<div>Скорость интернет соединения оптимальная - <mark>{props.speed}</mark> Мбит/c</div>)
+      MoreText = () => (<div>Скорость интернет соединения оптимальная - <mark>{dataSpeed.speed}</mark> Мбит/c</div>)
       break
   }
 
@@ -143,7 +152,7 @@ const Speed = ({data}) => {
         <i className={`${iconClass} ${colorClass}`}/>
       </div>
       <div className="collapsible-body">
-        <MoreText speed={speed}/>
+        <MoreText/>
       </div>
     </li>
   )

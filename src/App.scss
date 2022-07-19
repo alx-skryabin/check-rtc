@@ -25,6 +25,26 @@
   font-size: 2em;
   text-align: center;
   margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.ts__app-connection {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: .9em;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  .online {
+    color: lime;
+    font-size: .9em;
+  }
+
+  .offline {
+    color: tomato;
+    font-size: .9em;
+  }
 }
 
 .ts__app_theme-dark .ts__app-title {

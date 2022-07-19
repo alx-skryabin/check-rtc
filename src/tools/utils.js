@@ -68,7 +68,7 @@ function detectOS() {
   return OSName
 }
 
-function detectSpeed(setSpeed) {
+function detectSpeed(count, setDataSpeed) {
   const startTime = (new Date()).getTime()
   const imageSrc = 'https://dashboard.callshark.ru/resources/client/img/31120037-5mb.jpg?hash=' + startTime
   const downloadSize = 5000000 // size in bytes
@@ -82,7 +82,10 @@ function detectSpeed(setSpeed) {
     const speedBps = Math.round((downloadSize * 8) / duration)
     const speedMbps = (speedBps / 1024 / 1024).toFixed(2)
 
-    setSpeed(speedMbps)
+    setDataSpeed({
+      speed: speedMbps,
+      count: ++count
+    })
   }
 }
 

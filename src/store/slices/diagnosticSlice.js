@@ -6,15 +6,19 @@ export const diagnosticSlice = createSlice({
     result: {
       isSuccess: false,
       data: null // object
-    }
+    },
+    isInternet: navigator.onLine
   },
   reducers: {
     updateResult: (state, action) => {
       state.result = action.payload
+    },
+    updateInternet: (state, action) => {
+      state.isInternet = action.payload
     }
-  },
+  }
 })
 
-export const {updateResult} = diagnosticSlice.actions
+export const {updateResult, updateInternet} = diagnosticSlice.actions
 
 export default diagnosticSlice.reducer

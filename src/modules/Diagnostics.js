@@ -31,9 +31,18 @@ const requestedDevices = {
 
 export default class Diagnostics {
   constructor() {
-    this.points = checkPointsDefault
+    this.points = {...checkPointsDefault}
     this.webRTC = new WebRTC()
     this.soundLine = new SoundLine()
+
+    window.diagnostics = this
+  }
+
+  stop() {
+    console.log('Diagnostics stopped')
+    this.webRTC.disconnectCall()
+    this.webRTC.disableStreams()
+    this.soundLine.resetSoundLine()
   }
 
   async run() {

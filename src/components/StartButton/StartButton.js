@@ -15,9 +15,7 @@ export default function StartButton() {
     new Diagnostics().run()
       .then(onSuccess)
       .catch(onError)
-      .finally(
-        () => setInProgress(false)
-      )
+      .finally(() => setInProgress(false))
   }
 
   function onSuccess(data) {

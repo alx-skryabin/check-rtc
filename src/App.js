@@ -4,15 +4,18 @@ import Theme from './tools/theme'
 import StartButton from './components/StartButton/StartButton'
 import Result from './components/Result/Result'
 import Header from './components/Header/Header'
-import './App.css'
+import './App.scss'
 
 export default function App() {
-  const {isSuccess} = useSelector((state) => state.diagnostic.result)
+  const {
+    result: {isSuccess},
+    isInternet
+  } = useSelector((state) => state.diagnostic)
 
   return (
     <div className={Theme.defineClass}>
       <Header/>
-      {!isSuccess && <StartButton/>}
+      {!isSuccess && isInternet && <StartButton/>}
       <Result/>
     </div>
   )

@@ -45,10 +45,12 @@ export default class WebRTC {
   }
 
   disconnectCall() {
-    this.pc1.close()
-    this.pc2.close()
-    this.pc1 = null
-    this.pc2 = null
+    if (this.pc1 && this.pc2) {
+      this.pc1.close()
+      this.pc2.close()
+      this.pc1 = null
+      this.pc2 = null
+    }
   }
 
   disableStreams() {
@@ -56,6 +58,8 @@ export default class WebRTC {
     const audioTracks = this.localStream.getAudioTracks()
     videoTracks[0].stop()
     audioTracks[0].stop()
+    this.localStream = null
+    this.remoteStream = null
   }
 
   //webRTC

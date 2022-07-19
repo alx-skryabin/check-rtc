@@ -6,7 +6,7 @@ export default function VideoStreams() {
   const {isSuccess} = useSelector((state) => state.diagnostic.result)
 
   return (
-    <div className="ts__app-media" hidden={!isSuccess ?? ''}>
+    <div className="ts__app-media" hidden={!isSuccess}>
       <div className="ts__app-streams">
         <div className="ts__app-streams-item" hidden>
           <video
