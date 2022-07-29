@@ -1,3 +1,5 @@
+import {detectApple} from '../tools/utils'
+
 const offerOptions = {
   offerToReceiveAudio: 1,
   offerToReceiveVideo: 1
@@ -40,7 +42,14 @@ export default class WebRTC {
     // onaddstream event not work on safari
     return this.pc2.ontrack = e => {
       this.remoteStream = e.streams[0]
-      this.$remoteVideo.srcObject = this.remoteStream
+
+      if (!detectApple()) {
+        // todo not work in iphone through 3g/4g connections
+        this.$remoteVideo.srcObject = this.remoteStream
+      } else {
+        // temp fix for iphone through 3g/4g connections - crutch
+        this.$remoteVideo.srcObject = this.localStream
+      }
     }
   }
 

@@ -53,6 +53,12 @@ function detectBrowser() {
   return M.join(' ');
 }
 
+function detectApple() {
+  const isSafari = detectBrowser().toLowerCase().includes('safari')
+  const isMac = detectOS().toLowerCase().includes('mac')
+  return (isSafari && isMac)
+}
+
 function detectOS() {
   let OSName = 'Unknown'
   if (window.navigator.userAgent.indexOf('Windows NT 10.0') !== -1) OSName = 'Windows 10'
@@ -94,6 +100,7 @@ export {
   parseDevices,
   defEnableDebug,
   detectBrowser,
+  detectApple,
   detectOS,
   detectSpeed,
   detectDevice
