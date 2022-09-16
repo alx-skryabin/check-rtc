@@ -1,3 +1,10 @@
+function getNameUsedDevice(stream) {
+  return stream.getTracks().reduce((list, device) => {
+    const {kind, label} = device
+    return {...list, [kind]: label}
+  }, {})
+}
+
 function getConnectedDevices() {
   return navigator.mediaDevices.enumerateDevices()
     .then(parseDevices)
@@ -96,6 +103,7 @@ function detectSpeed(count, setDataSpeed) {
 }
 
 export {
+  getNameUsedDevice,
   getConnectedDevices,
   parseDevices,
   defEnableDebug,

@@ -1,6 +1,6 @@
 import WebRTC from './WebRTC'
 import SoundLine from './SoundMeter/SoundLine'
-import {getConnectedDevices} from '../tools/utils'
+import {getConnectedDevices, getNameUsedDevice} from '../tools/utils'
 
 const CONSOLE_LOG = true
 
@@ -60,10 +60,10 @@ export default class Diagnostics {
     const permission = {...checkPointsDefault.permission}
 
     return navigator.mediaDevices.getUserMedia(requestedDevices)
-      .then(async stream => {
+      .then(stream => {
         this.webRTC.localStream = stream
 
-        const devices = await getConnectedDevices()
+        const devices = getNameUsedDevice(stream)
 
         this.webRTC.$localVideo.onloadeddata = () => {
           console.log('localVideo onloadeddata')
