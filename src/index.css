@@ -6,6 +6,17 @@
   scrollbar-width: thin;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #fff; /*Цвет скролла*/
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 5px; /*Закругление ползунка*/
+    background-color: #ccc; /*Цвет ползунка*/
+}
+::-webkit-scrollbar {
+    width: 6px;  /*Толщина скролла*/
+}
+
 body {
   font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
