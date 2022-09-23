@@ -105,7 +105,6 @@ const Rtc = ({data}) => {
 
 const Speed = ({data}) => {
   const minSpeed = 10
-  const countCheck = 5
 
   const [dataSpeed, setDataSpeed] = useState({
     speed: 0,
@@ -113,9 +112,7 @@ const Speed = ({data}) => {
   })
 
   useEffect(() => {
-    if (dataSpeed.count < countCheck) {
-      detectSpeed(dataSpeed.count, setDataSpeed)
-    }
+    detectSpeed(dataSpeed.count, setDataSpeed)
   })
 
   let iconClass = ''

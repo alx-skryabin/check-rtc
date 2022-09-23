@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Context} from '../../../modules/intl/Intl'
 import {switchTheme} from '../../../store/slices/systemSlice'
 import Theme from '../../../tools/theme'
+import {defineLogger} from '../../../tools/utils'
 import './ButtonsSystem.scss'
 
 export default function ButtonsSystem() {
@@ -24,7 +25,7 @@ export default function ButtonsSystem() {
 
   return (
     <>
-      {debug &&
+      {(debug || defineLogger()) &&
       <i className="fas fa-bug ts__app-debug"
          onClick={handlerDebug}
       />}

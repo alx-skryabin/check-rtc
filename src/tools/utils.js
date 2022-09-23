@@ -1,3 +1,15 @@
+function defineLogger() {
+  let url = new URL(window.location.href)
+  return Boolean(url.searchParams.get('logger'))
+}
+
+const isLogger = defineLogger()
+
+function logger(...arg) {
+  if (!isLogger || !arg.length) return
+  console.log(...arg)
+}
+
 function getNameUsedDevice(stream) {
   return stream.getTracks().reduce((list, device) => {
     const {kind, label} = device
@@ -82,27 +94,51 @@ function detectOS() {
 }
 
 function detectSpeed(count, setDataSpeed) {
+  const countCheck = 3
+
+  if (count === countCheck) return
+
+  const timeout = 10
+  let downloadedSize = 0
   const startTime = (new Date()).getTime()
-  const imageSrc = 'https://dashboard.callshark.ru/resources/client/img/31120037-5mb.jpg?hash=' + startTime
-  const downloadSize = 5000000 // size in bytes
+  let endTime = null
+  let duration = null
 
-  const download = new Image()
-  download.src = imageSrc
+  const xhr = new XMLHttpRequest()
+  xhr.open('GET', `https://dashboard.callshark.ru/resources/client/img/31120037-5mb.jpg?hash=${startTime}`, true)
+  xhr.timeout = timeout * 1000
 
-  download.onload = () => {
-    const endTime = (new Date()).getTime()
-    const duration = Math.round((endTime - startTime) / 1000)
-    const speedBps = Math.round((downloadSize * 8) / duration)
-    const speedMbps = (speedBps / 1024 / 1024).toFixed(2)
 
-    setDataSpeed({
-      speed: speedMbps,
-      count: ++count
-    })
+  xhr.ontimeout = () => {
+    xhr.abort()
+    logger('Запрос превысил максимальное время')
   }
+
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 3) {
+      downloadedSize = xhr.response.length
+    }
+
+    if (this.readyState === 4) {
+      endTime = (new Date()).getTime()
+      duration = (endTime - startTime) / 1000
+      const speedBps = Math.round((downloadedSize * 8) / duration)
+      const speedMbps = (speedBps / 1024 / 1024).toFixed(2)
+      logger('speed', speedMbps)
+
+      setDataSpeed({
+        speed: speedMbps,
+        count: ++count
+      })
+    }
+  }
+
+  xhr.send()
 }
 
 export {
+  logger,
+  defineLogger,
   getNameUsedDevice,
   getConnectedDevices,
   parseDevices,

@@ -1,11 +1,9 @@
-import {detectApple} from '../tools/utils'
+import {detectApple, logger} from '../tools/utils'
 
 const offerOptions = {
   offerToReceiveAudio: 1,
   offerToReceiveVideo: 1
 }
-
-const CONSOLE_LOG = false
 
 export default class WebRTC {
   constructor() {
@@ -121,12 +119,5 @@ export default class WebRTC {
 
   getOtherPc(pc) {
     return (pc === this.pc1) ? this.pc2 : this.pc1
-  }
-}
-
-function logger(val1, val2 = '') {
-  if (CONSOLE_LOG) {
-    if (val2) console.log(val1, val2)
-    else console.log(val1)
   }
 }
