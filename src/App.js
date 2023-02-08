@@ -7,6 +7,8 @@ import Header from './components/Header/Header'
 import './App.scss'
 
 export default function App() {
+  console.log('v2.0.1') // 08.02.23
+
   const {
     result: {isSuccess},
     isInternet
