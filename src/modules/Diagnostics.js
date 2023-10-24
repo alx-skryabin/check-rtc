@@ -25,7 +25,16 @@ const checkPointsDefault = {
 }
 
 const requestedDevices = {
-  audio: true,
+  // шумодав
+  audio: {
+    autoGainControl: true,
+    echoCancellation: true,
+    noiseSuppression: true,
+    mandatory: {
+      googNoiseSupression: true,
+      googAudioMirroring: true
+    }
+  },
   video: true
 }
 
